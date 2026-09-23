@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knovera | Biology</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#07120d;
+    color:#f4fff8;
+    line-height:1.6;
+}
+
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(7,18,13,.92);
+    border-bottom:1px solid rgba(102,255,153,.15);
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#66ff99;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#d9ffe6;
+    border:1px solid rgba(102,255,153,.25);
+    padding:9px 16px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+.hero{
+    padding:70px 7% 45px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(102,255,153,.1);
+    border:1px solid rgba(102,255,153,.25);
+    color:#66ff99;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(38px,8vw,70px);
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#66ff99,#b6ffd0);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#a8b8ae;
+    font-size:17px;
+}
+
+.progress-box{
+    width:86%;
+    max-width:850px;
+    margin:20px auto 55px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    color:#a8b8ae;
+    font-size:14px;
+}
+
+.progress-bg{
+    width:100%;
+    height:9px;
+    background:#14241a;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:75%;
+    height:100%;
+    background:linear-gradient(90deg,#39e879,#a0ffbd);
+    border-radius:20px;
+    transition:.5s;
+}
+
+.container{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+}
+
+.section{
+    margin-bottom:55px;
+}
+
+.section h2{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.section-intro{
+    color:#9eafa5;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,.08),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(102,255,153,.14);
+    border-radius:20px;
+    padding:24px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(102,255,153,.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#9eafa5;
+    font-size:14px;
+}
+
+.concept{
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,.12);
+    border-radius:20px;
+    padding:28px;
+}
+
+.concept h3{
+    color:#66ff99;
+    margin-bottom:10px;
+}
+
+.concept p{
+    color:#a8b8ae;
+}
+
+.levels{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.level{
+    padding:22px;
+    text-align:center;
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,.12);
+    border-radius:18px;
+}
+
+.level strong{
+    display:block;
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.level span{
+    color:#91a197;
+    font-size:13px;
+}
+
+.challenge{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,.12),
+        rgba(102,255,153,.03)
+    );
+    border:1px solid rgba(102,255,153,.2);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+}
+
+.question{
+    font-size:20px;
+    margin:15px 0 22px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    max-width:500px;
+    margin:auto;
+}
+
+.option{
+    padding:13px;
+    border:1px solid rgba(102,255,153,.2);
+    background:#0b1b11;
+    color:#f4fff8;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+#result{
+    margin-top:18px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+.complete-btn{
+    display:block;
+    margin:30px auto 0;
+    padding:13px 22px;
+    border:none;
+    border-radius:13px;
+    background:#66ff99;
+    color:#07120d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.complete-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(102,255,153,.2);
+}
+
+.next{
+    text-align:center;
+    margin:65px 0;
+}
+
+.next a{
+    display:inline-block;
+    text-decoration:none;
+    color:#07120d;
+    background:#66ff99;
+    padding:14px 24px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.next a:hover{
+    transform:translateY(-3px);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#65736a;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width:700px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .hero{
+        padding:55px 6% 35px;
+    }
+
+    .container{
+        width:88%;
+    }
+
+    .levels{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:430px){
+
+    .levels{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Knovera
+    </div>
+
+    <a href="science.html" class="back-btn">
+        ← Science
+    </a>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="badge">
+        SCIENCE • BIOLOGY
+    </div>
+
+    <h1>
+        Discover the
+        <span class="gradient-text">World of Life.</span>
+    </h1>
+
+    <p>
+        Explore cells, the human body, genetics and ecosystems
+        to understand how living things work.
+    </p>
+
+</section>
+
+
+<div class="progress-box">
+
+    <div class="progress-info">
+
+        <span>Science Journey</span>
+
+        <span id="progressText">
+            75%
+        </span>
+
+    </div>
+
+    <div class="progress-bg">
+
+        <div class="progress" id="progressBar"></div>
+
+    </div>
+
+</div>
+
+
+<main class="container">
+
+
+<!-- CORE CONCEPTS -->
+
+<section class="section">
+
+    <h2>🧬 Core Concepts</h2>
+
+    <p class="section-intro">
+        Biology is the study of living organisms and how life works.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">🔬</div>
+
+            <h3>Cells</h3>
+
+            <p>
+                Cells are the basic structural and functional units
+                of living organisms.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🫀</div>
+
+            <h3>Human Body</h3>
+
+            <p>
+                The human body contains organs and systems that work
+                together to keep us alive.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🧬</div>
+
+            <h3>Genetics</h3>
+
+            <p>
+                Genetics explains how characteristics are passed
+                from parents to offspring.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌳</div>
+
+            <h3>Ecosystems</h3>
+
+            <p>
+                Ecosystems include living organisms interacting with
+                each other and their environment.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CELL -->
+
+<section class="section">
+
+    <h2>🔬 The Cell</h2>
+
+    <div class="concept">
+
+        <h3>The building block of life</h3>
+
+        <p>
+            A cell is the basic unit of life. Some organisms consist
+            of only one cell, while others contain many cells.
+        </p>
+
+        <br>
+
+        <p>
+            Cells contain structures called organelles that perform
+            different jobs and help the cell function properly.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LEVELS -->
+
+<section class="section">
+
+    <h2>🧩 Levels of Organization</h2>
+
+    <p class="section-intro">
+        In many living organisms, smaller structures combine to
+        form larger systems.
+    </p>
+
+    <div class="levels">
+
+        <div class="level">
+
+            <strong>Cell</strong>
+
+            <span>
+                Basic unit of life
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>Tissue</strong>
+
+            <span>
+                Group of similar cells
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>Organ</strong>
+
+            <span>
+                Different tissues working together
+            </span>
+
+        </div>
+
+
+        <div class="level">
+
+            <strong>Organ System</strong>
+
+            <span>
+                Organs working together
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HUMAN BODY -->
+
+<section class="section">
+
+    <h2>🫀 Human Body Systems</h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">❤️</div>
+
+            <h3>Circulatory System</h3>
+
+            <p>
+                Moves blood, oxygen and nutrients throughout the body.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🫁</div>
+
+            <h3>Respiratory System</h3>
+
+            <p>
+                Helps the body take in oxygen and remove carbon dioxide.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🧠</div>
+
+            <h3>Nervous System</h3>
+
+            <p>
+                Helps control and coordinate activities throughout the body.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGE -->
+
+<section class="section">
+
+    <div class="challenge">
+
+        <h2>⚡ Quick Biology Challenge</h2>
+
+        <p class="question">
+            What is the basic unit of life?
+        </p>
+
+        <div class="options">
+
+            <button class="option" onclick="checkAnswer(false)">
+                Organ
+            </button>
+
+            <button class="option" onclick="checkAnswer(true)">
+                Cell
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Tissue
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Organ System
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPLETE -->
+
+<button class="complete-btn" onclick="completeLesson()">
+    ✓ Mark Biology Complete
+</button>
+
+
+<!-- NEXT -->
+
+<div class="next">
+
+    <a href="earth.html">
+        Next Lesson: Earth Science →
+    </a>
+
+</div>
+
+
+</main>
+
+
+<footer>
+    © 2026 Knovera • Learn. Understand. Grow.
+</footer>
+
+
+<script>
+
+let progress = 75;
+
+
+function updateProgress(value){
+
+    progress = value;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    document.getElementById("progressText").innerText =
+        progress + "%";
+
+}
+
+
+function checkAnswer(correct){
+
+    const result =
+        document.getElementById("result");
+
+    if(correct){
+
+        result.innerText =
+            "✓ Correct! The cell is the basic unit of life.";
+
+        result.style.color =
+            "#66ff99";
+
+        /*
+        Biology starts at 75%.
+        Correct answer moves it forward,
+        never backward.
+        */
+
+        updateProgress(90);
+
+    }else{
+
+        result.innerText =
+            "✗ Not quite. Try again!";
+
+        result.style.color =
+            "#ff8f8f";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    updateProgress(100);
+
+    alert("Biology completed! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
