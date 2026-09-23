@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knovera | Ratio & Proportion</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#07111f;
+    color:#f5f7ff;
+    line-height:1.6;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:rgba(7,17,31,0.92);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+}
+
+.back-btn{
+    color:#aebbd0;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.back-btn:hover{
+    color:white;
+}
+
+.hero{
+    text-align:center;
+    padding:70px 20px 45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:20px;
+    background:rgba(99,102,241,0.12);
+    border:1px solid rgba(99,102,241,0.3);
+    color:#b1b7ff;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(38px,8vw,64px);
+    line-height:1.1;
+    margin-bottom:18px;
+    background:linear-gradient(90deg,#ffffff,#a5aaff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#9eabc0;
+    font-size:17px;
+}
+
+.progress-box{
+    width:min(700px,90%);
+    margin:0 auto 50px;
+    padding:20px;
+    background:#0d1a2c;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    color:#aebbd0;
+    font-size:14px;
+}
+
+.progress{
+    height:9px;
+    background:#18263a;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    border-radius:20px;
+}
+
+.container{
+    width:min(1000px,90%);
+    margin:auto;
+}
+
+.section{
+    margin-bottom:55px;
+}
+
+.section h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.section p{
+    color:#a9b5c8;
+    font-size:16px;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.card{
+    background:#0d1a2c;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:25px;
+    transition:0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(139,92,246,0.45);
+}
+
+.card h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+}
+
+.formula{
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background:#07111f;
+    border:1px solid rgba(255,255,255,0.06);
+    color:#c5caff;
+    font-weight:bold;
+}
+
+.example{
+    margin-top:20px;
+    padding:22px;
+    background:#0d1a2c;
+    border-left:4px solid #6366f1;
+    border-radius:18px;
+}
+
+.challenge{
+    text-align:center;
+    background:linear-gradient(135deg,#101d32,#0c1728);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:35px 20px;
+}
+
+.challenge h2{
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:22px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.option{
+    padding:12px 22px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:#16243a;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#223653;
+}
+
+#result{
+    margin-top:18px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+.complete{
+    text-align:center;
+    margin:50px 0;
+}
+
+.complete button{
+    border:none;
+    padding:15px 25px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.complete button:hover{
+    transform:translateY(-2px);
+}
+
+.next{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.next-btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 24px;
+    border-radius:14px;
+    background:#111f34;
+    color:white;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#718097;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    .hero{
+        padding:55px 18px 35px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .card-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section h2{
+        font-size:26px;
+    }
+
+    .container{
+        width:90%;
+    }
+
+    .options{
+        flex-direction:column;
+    }
+
+    .option{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Knovera
+    </div>
+
+    <a href="mensuration.html" class="back-btn">
+        ← Mensuration
+    </a>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="badge">
+        Mathematics • Chapter 6
+    </div>
+
+    <h1>
+        Ratio & Proportion
+    </h1>
+
+    <p>
+        Learn how to compare quantities using ratios
+        and understand proportional relationships.
+    </p>
+
+</section>
+
+
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span>Learning Progress</span>
+        <span id="progressText">100%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<main class="container">
+
+
+<section class="section">
+
+    <h2>What is a Ratio?</h2>
+
+    <p>
+        A ratio is a way of comparing two quantities.
+        It tells us how much of one quantity there is
+        compared with another.
+    </p>
+
+    <div class="example">
+
+        <strong>Example:</strong>
+
+        <p style="margin-top:10px;">
+            Suppose there are 2 red balls and 3 blue balls.
+        </p>
+
+        <p>
+            The ratio of red balls to blue balls is:
+        </p>
+
+        <p style="margin-top:10px;">
+            <strong>2 : 3</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Understanding Ratios</h2>
+
+    <div class="card-grid">
+
+        <div class="card">
+
+            <h3>Part to Part</h3>
+
+            <p>
+                A ratio can compare one part with another part.
+            </p>
+
+            <div class="formula">
+                2 : 3
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Part to Whole</h3>
+
+            <p>
+                A ratio can also compare one part with
+                the total quantity.
+            </p>
+
+            <div class="formula">
+                2 : 5
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Equivalent Ratios</h3>
+
+            <p>
+                Multiplying or dividing both parts by the
+                same number gives an equivalent ratio.
+            </p>
+
+            <div class="formula">
+                2 : 3 = 4 : 6
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>What is Proportion?</h2>
+
+    <p>
+        A proportion is an equation that shows that
+        two ratios are equal.
+    </p>
+
+    <div class="example">
+
+        <strong>Example:</strong>
+
+        <p style="margin-top:10px;">
+            2 : 3 = 4 : 6
+        </p>
+
+        <p>
+            Both ratios represent the same relationship,
+            so they form a proportion.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Finding an Unknown Value</h2>
+
+    <div class="example">
+
+        <strong>Question:</strong>
+
+        <p style="margin-top:10px;">
+            2 : 5 = 6 : x
+        </p>
+
+        <p style="margin-top:15px;">
+            Since 2 becomes 6 by multiplying by 3,
+            multiply 5 by 3 as well.
+        </p>
+
+        <p>
+            x = 15
+        </p>
+
+        <p>
+            Therefore:
+            <strong>2 : 5 = 6 : 15</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Quick Challenge ⚡</h2>
+
+    <div class="challenge">
+
+        <p>
+            If the ratio of boys to girls is 2 : 3
+            and there are 6 boys, how many girls are there?
+        </p>
+
+        <div class="question">
+            Choose the correct answer:
+        </div>
+
+        <div class="options">
+
+            <button class="option" onclick="checkAnswer(6)">
+                6
+            </button>
+
+            <button class="option" onclick="checkAnswer(9)">
+                9
+            </button>
+
+            <button class="option" onclick="checkAnswer(12)">
+                12
+            </button>
+
+            <button class="option" onclick="checkAnswer(8)">
+                8
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<div class="complete">
+
+    <button onclick="completeLesson()">
+        ✓ Mark Lesson Complete
+    </button>
+
+</div>
+
+
+<div class="next">
+
+    <a href="science.html" class="next-btn">
+        Next Subject → Science
+    </a>
+
+</div>
+
+
+</main>
+
+
+<footer>
+    © 2026 Knovera • Learn. Understand. Grow.
+</footer>
+
+
+<script>
+
+function checkAnswer(answer){
+
+    const result = document.getElementById("result");
+
+    if(answer === 9){
+
+        result.textContent =
+        "Correct! 🎉 The answer is 9 girls.";
+
+    }else{
+
+        result.textContent =
+        "Not quite. 2 becomes 6 by ×3, so 3 also becomes 9.";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("progressText").textContent = "100%";
+
+    alert("Ratio & Proportion completed! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
