@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mathematics | Knovera</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: rgba(7, 11, 20, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #63e6ff;
+        }
+
+        .back-btn {
+            color: #b8c3d9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #63e6ff;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 90px 7% 60px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 30px;
+            background: rgba(99,230,255,0.1);
+            border: 1px solid rgba(99,230,255,0.25);
+            color: #63e6ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 76px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #9ba8bf;
+            font-size: 17px;
+        }
+
+        /* PROGRESS */
+
+        .progress-section {
+            max-width: 1100px;
+            margin: 0 auto 55px;
+            padding: 0 7%;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            color: #aab5c8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 9px;
+            background: #151c2c;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 8%;
+            height: 100%;
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            border-radius: 20px;
+        }
+
+        /* CHAPTERS */
+
+        .chapters {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 7% 70px;
+        }
+
+        .section-title {
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #8f9bb0;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .chapter {
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.055),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 22px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .chapter:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99,230,255,0.3);
+        }
+
+        .chapter-number {
+            color: #63e6ff;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .chapter h3 {
+            font-size: 23px;
+            margin: 8px 0;
+        }
+
+        .chapter p {
+            color: #929eb3;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-btn {
+            display: inline-block;
+            padding: 11px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(99,230,255,0.25);
+            background: rgba(99,230,255,0.08);
+            color: #63e6ff;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #63e6ff;
+            color: #071019;
+        }
+
+        /* CHALLENGE */
+
+        .challenge {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 7%;
+        }
+
+        .challenge-box {
+            padding: 35px;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(99,230,255,0.09),
+                rgba(155,124,255,0.08)
+            );
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .challenge-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .challenge-box p {
+            color: #a0abc0;
+            margin-bottom: 25px;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .answer {
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 13px;
+            background: #101725;
+            color: white;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .answer:hover {
+            border-color: #63e6ff;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        /* FUTURE */
+
+        .future {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 7%;
+        }
+
+        .future-box {
+            text-align: center;
+            padding: 45px 25px;
+            border-radius: 24px;
+            border: 1px dashed rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.025);
+        }
+
+        .future-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .future-box p {
+            color: #8f9bb0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #707c91;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 65px 5% 45px;
+            }
+
+            .progress-section,
+            .chapters,
+            .challenge,
+            .future {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .chapter-grid,
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">
+            Kno<span>vera</span>
+        </div>
+
+        <a href="subjects.html" class="back-btn">
+            ← Subjects
+        </a>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="badge">
+            MATHEMATICS
+        </div>
+
+        <h1>
+            Think.<br>
+            <span class="gradient-text">Solve.</span>
+        </h1>
+
+        <p>
+            Build strong mathematical thinking through concepts,
+            examples, practice and problem solving.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+        <div class="progress-top">
+            <span>Your Progress</span>
+            <span>8%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CHAPTERS -->
+
+    <section class="chapters">
+
+        <div class="section-title">
+            <h2>Mathematics Chapters</h2>
+            <p>Choose a chapter and start learning.</p>
+        </div>
+
+
+        <div class="chapter-grid">
+
+
+            <!-- CHAPTER 1 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 01
+                </div>
+
+                <h3>
+                    Numbers & Operations
+                </h3>
+
+                <p>
+                    Learn about numbers, number types and
+                    the four basic mathematical operations.
+                </p>
+
+                <!-- IMPORTANT CONNECTION -->
+
+                <a
+                    href="numbers.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+
+            <!-- CHAPTER 2 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 02
+                </div>
+
+                <h3>
+                    Algebra
+                </h3>
+
+                <p>
+                    Understand variables, expressions,
+                    equations and algebraic thinking.
+                </p>
+
+                <a
+                    href="algebra.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+
+            <!-- CHAPTER 3 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 03
+                </div>
+
+                <h3>
+                    Linear Equations
+                </h3>
+
+                <p>
+                    Learn how to solve equations and
+                    understand unknown values.
+                </p>
+
+                <a
+                    href="equations.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+
+            <!-- CHAPTER 4 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 04
+                </div>
+
+                <h3>
+                    Geometry
+                </h3>
+
+                <p>
+                    Explore shapes, angles, lines and
+                    geometric relationships.
+                </p>
+
+                <a
+                    href="geometry.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+
+            <!-- CHAPTER 5 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 05
+                </div>
+
+                <h3>
+                    Mensuration
+                </h3>
+
+                <p>
+                    Learn area, perimeter, volume and
+                    measurement concepts.
+                </p>
+
+                <a
+                    href="mensuration.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+
+            <!-- CHAPTER 6 -->
+
+            <div class="chapter">
+
+                <div class="chapter-number">
+                    CHAPTER 06
+                </div>
+
+                <h3>
+                    Ratio & Proportion
+                </h3>
+
+                <p>
+                    Understand ratios, proportions and
+                    their applications.
+                </p>
+
+                <a
+                    href="ratio.html"
+                    class="lesson-btn">
+                    Start Chapter →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK CHALLENGE -->
+
+    <section class="challenge">
+
+        <div class="challenge-box">
+
+            <h2>
+                ⚡ Quick Math Challenge
+            </h2>
+
+            <p>
+                What is 12 × 8?
+            </p>
+
+            <div class="answers">
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(86)">
+                    86
+                </button>
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(96)">
+                    96
+                </button>
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(108)">
+                    108
+                </button>
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(112)">
+                    112
+                </button>
+
+            </div>
+
+            <div id="result"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+
+    <section class="future">
+
+        <div class="future-box">
+
+            <h2>
+                More Mathematics Coming
+            </h2>
+
+            <p>
+                More lessons, examples, quizzes and
+                interactive practice are being prepared.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Knovera — Learn. Understand. Grow.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function checkAnswer(answer) {
+
+            const result = document.getElementById("result");
+
+            if (answer === 96) {
+
+                result.textContent =
+                    "Correct! 🎉 12 × 8 = 96";
+
+                result.style.color = "#63e6ff";
+
+            } else {
+
+                result.textContent =
+                    "Not quite. Try again!";
+
+                result.style.color = "#ff8b8b";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
