@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Knovera — Subjects</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b12;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(8, 11, 18, 0.85);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #7c5cff;
+        }
+
+        .home-btn {
+            color: #bfc5d2;
+            text-decoration: none;
+            font-size: 14px;
+
+            padding: 10px 15px;
+
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            color: white;
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            text-align: center;
+
+            padding: 100px 7% 80px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: #6948ff;
+            filter: blur(180px);
+            opacity: 0.16;
+
+            top: -180px;
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 9px 16px;
+
+            border-radius: 30px;
+
+            background: rgba(124,92,255,0.08);
+            border: 1px solid rgba(124,92,255,0.3);
+
+            color: #bcaeff;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 75px);
+            letter-spacing: -4px;
+
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #a996ff,
+                #6f51ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #929aaa;
+
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* SUBJECT SECTION */
+
+        .subjects-section {
+            padding: 30px 7% 100px;
+        }
+
+        .subjects {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        /* CARD */
+
+        .subject-card {
+            position: relative;
+
+            padding: 35px;
+
+            min-height: 270px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.075),
+                    rgba(255,255,255,0.025)
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            overflow: hidden;
+
+            transition: 0.35s;
+        }
+
+        .subject-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -80px;
+            bottom: -80px;
+
+            background: #7055ff;
+
+            filter: blur(90px);
+
+            opacity: 0.12;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(124,92,255,0.4);
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .icon {
+            font-size: 40px;
+
+            margin-bottom: 25px;
+        }
+
+        .subject-card h2 {
+            font-size: 25px;
+
+            margin-bottom: 12px;
+        }
+
+        .subject-card p {
+            color: #8d95a6;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+            max-width: 400px;
+        }
+
+        /* BUTTON */
+
+        .explore-btn {
+            margin-top: 25px;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            background: rgba(255,255,255,0.05);
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .explore-btn:hover {
+            background: #6f51ff;
+
+            border-color: #6f51ff;
+
+            transform: translateX(3px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 7%;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #656d7e;
+
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 80px 5% 60px;
+            }
+
+            .subjects-section {
+                padding: 20px 5% 80px;
+            }
+
+            .subjects {
+                grid-template-columns: 1fr;
+            }
+
+            .subject-card {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Kno<span>vera</span>
+        </div>
+
+        <!-- BACK TO HOME -->
+
+        <a href="index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                Knovera Learning Hub
+            </div>
+
+            <h1>
+                Explore
+                <span class="gradient-text">Knowledge.</span>
+            </h1>
+
+            <p>
+                Choose a subject and start building your
+                understanding step by step.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUBJECTS -->
+
+    <section class="subjects-section">
+
+        <div class="subjects">
+
+
+            <!-- MATHEMATICS -->
+
+            <div class="subject-card">
+
+                <div class="icon">
+                    📐
+                </div>
+
+                <h2>
+                    Mathematics
+                </h2>
+
+                <p>
+                    Build your mathematical thinking with
+                    numbers, algebra, geometry, equations
+                    and problem solving.
+                </p>
+
+                <!-- CONNECTED TO math.html -->
+
+                <button
+                    class="explore-btn"
+                    onclick="window.location.href='math.html'">
+
+                    Explore Mathematics →
+
+                </button>
+
+            </div>
+
+
+            <!-- SCIENCE -->
+
+            <div class="subject-card">
+
+                <div class="icon">
+                    🔬
+                </div>
+
+                <h2>
+                    Science
+                </h2>
+
+                <p>
+                    Discover physics, chemistry, biology
+                    and the science behind the world around us.
+                </p>
+
+                <!-- FUTURE PAGE ALREADY PREPARED -->
+
+                <button
+                    class="explore-btn"
+                    onclick="window.location.href='science.html'">
+
+                    Explore Science →
+
+                </button>
+
+            </div>
+
+
+            <!-- ENGLISH -->
+
+            <div class="subject-card">
+
+                <div class="icon">
+                    📖
+                </div>
+
+                <h2>
+                    English
+                </h2>
+
+                <p>
+                    Improve grammar, vocabulary, reading
+                    and communication skills.
+                </p>
+
+                <!-- FUTURE PAGE ALREADY PREPARED -->
+
+                <button
+                    class="explore-btn"
+                    onclick="window.location.href='english.html'">
+
+                    Explore English →
+
+                </button>
+
+            </div>
+
+
+            <!-- COMPUTER SCIENCE -->
+
+            <div class="subject-card">
+
+                <div class="icon">
+                    💻
+                </div>
+
+                <h2>
+                    Computer Science
+                </h2>
+
+                <p>
+                    Learn coding, programming, technology
+                    and how computers work.
+                </p>
+
+                <!-- FUTURE PAGE ALREADY PREPARED -->
+
+                <button
+                    class="explore-btn"
+                    onclick="window.location.href='computer.html'">
+
+                    Explore Computer Science →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Knovera — Learn. Understand. Grow.
+
+    </footer>
+
+</body>
+</html>
