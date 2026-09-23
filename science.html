@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Science | Knovera</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07110d;
+            color: #f4fff8;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(7,17,13,0.85);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #7fffb2;
+        }
+
+        .back-btn {
+            color: #d9fbe6;
+            text-decoration: none;
+            padding: 9px 16px;
+            border: 1px solid rgba(127,255,178,0.25);
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(127,255,178,0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 80px 8% 50px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 30px;
+            background: rgba(127,255,178,0.08);
+            border: 1px solid rgba(127,255,178,0.2);
+            color: #7fffb2;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #7fffb2, #d7ffe6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #a9bdb1;
+            font-size: 17px;
+        }
+
+        .progress-section {
+            width: 84%;
+            max-width: 900px;
+            margin: 10px auto 50px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #a9bdb1;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #14231b;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #55e894, #a0ffc2);
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+        main {
+            width: 84%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 65px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .section-text {
+            color: #a9bdb1;
+            margin-bottom: 25px;
+        }
+
+        .science-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .flow-step {
+            padding: 12px 17px;
+            border-radius: 30px;
+            background: rgba(127,255,178,0.06);
+            border: 1px solid rgba(127,255,178,0.15);
+            color: #d8f9e3;
+        }
+
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .chapter {
+            position: relative;
+            padding: 28px;
+            min-height: 230px;
+            border-radius: 24px;
+            background: linear-gradient(
+                145deg,
+                rgba(127,255,178,0.08),
+                rgba(255,255,255,0.025)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .chapter:hover {
+            transform: translateY(-6px);
+            border-color: rgba(127,255,178,0.3);
+        }
+
+        .chapter-icon {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .chapter h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .chapter p {
+            color: #9fb2a6;
+            margin-bottom: 22px;
+        }
+
+        .lesson-btn {
+            display: inline-block;
+            padding: 11px 17px;
+            border-radius: 12px;
+            background: rgba(127,255,178,0.08);
+            border: 1px solid rgba(127,255,178,0.25);
+            color: #7fffb2;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: rgba(127,255,178,0.16);
+            transform: translateY(-2px);
+        }
+
+        .concept-box {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .concept-box h3 {
+            color: #7fffb2;
+            margin-bottom: 7px;
+        }
+
+        .concept-box p {
+            color: #a9bdb1;
+        }
+
+        .challenge {
+            text-align: center;
+            padding: 35px 25px;
+            background: linear-gradient(
+                145deg,
+                rgba(127,255,178,0.09),
+                rgba(255,255,255,0.025)
+            );
+            border: 1px solid rgba(127,255,178,0.18);
+            border-radius: 25px;
+        }
+
+        .question {
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .answer-btn {
+            padding: 13px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .answer-btn:hover {
+            background: rgba(127,255,178,0.1);
+            border-color: rgba(127,255,178,0.3);
+        }
+
+        .result {
+            margin-top: 18px;
+            min-height: 25px;
+            font-weight: bold;
+        }
+
+        .complete-btn {
+            margin-top: 25px;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 13px;
+            background: #7fffb2;
+            color: #07110d;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #718277;
+        }
+
+        @media(max-width: 768px) {
+
+            header {
+                padding: 18px 5%;
+            }
+
+            .hero {
+                padding: 60px 5% 40px;
+            }
+
+            main,
+            .progress-section {
+                width: 90%;
+            }
+
+            .chapters,
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 46px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">Knovera</div>
+
+    <a href="subjects.html" class="back-btn">
+        ← Subjects
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="tag">SCIENCE</div>
+
+    <h1>
+        Discover
+        <span class="gradient-text">Science.</span>
+    </h1>
+
+    <p>
+        Understand the world through observation,
+        experiments, evidence and curiosity.
+    </p>
+
+</section>
+
+
+<div class="progress-section">
+
+    <div class="progress-top">
+        <span>Science Progress</span>
+        <span id="progressText">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<main>
+
+    <section>
+
+        <h2 class="section-title">
+            What is Science?
+        </h2>
+
+        <p class="section-text">
+            Science is a systematic way of understanding the natural
+            world by observing, asking questions, testing ideas and
+            analyzing evidence.
+        </p>
+
+        <div class="science-flow">
+
+            <div class="flow-step">Observe</div>
+            <div class="flow-step">Ask</div>
+            <div class="flow-step">Predict</div>
+            <div class="flow-step">Experiment</div>
+            <div class="flow-step">Analyze</div>
+            <div class="flow-step">Learn</div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2 class="section-title">
+            Explore Science
+        </h2>
+
+        <p class="section-text">
+            Choose a branch of science and start learning.
+        </p>
+
+
+        <div class="chapters">
+
+
+            <!-- PHYSICS -->
+
+            <div class="chapter">
+
+                <div class="chapter-icon">⚡</div>
+
+                <h3>Physics</h3>
+
+                <p>
+                    Explore motion, force, energy, gravity and
+                    the laws that describe how the universe works.
+                </p>
+
+                <a href="physics.html" class="lesson-btn">
+                    Explore Physics →
+                </a>
+
+            </div>
+
+
+            <!-- CHEMISTRY -->
+
+            <div class="chapter">
+
+                <div class="chapter-icon">🧪</div>
+
+                <h3>Chemistry</h3>
+
+                <p>
+                    Learn about atoms, elements, compounds,
+                    reactions and the chemistry of everyday life.
+                </p>
+
+                <a href="chemistry.html" class="lesson-btn">
+                    Explore Chemistry →
+                </a>
+
+            </div>
+
+
+            <!-- BIOLOGY -->
+
+            <div class="chapter">
+
+                <div class="chapter-icon">🧬</div>
+
+                <h3>Biology</h3>
+
+                <p>
+                    Discover living organisms, cells, genetics,
+                    ecosystems and the amazing world of life.
+                </p>
+
+                <a href="biology.html" class="lesson-btn">
+                    Explore Biology →
+                </a>
+
+            </div>
+
+
+            <!-- EARTH SCIENCE -->
+
+            <div class="chapter">
+
+                <div class="chapter-icon">🌍</div>
+
+                <h3>Earth Science</h3>
+
+                <p>
+                    Explore our planet, rocks, atmosphere,
+                    weather, oceans and the Earth's systems.
+                </p>
+
+                <a href="earth.html" class="lesson-btn">
+                    Explore Earth Science →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2 class="section-title">
+            How Science Works
+        </h2>
+
+
+        <div class="concept-box">
+
+            <h3>01 — Observation</h3>
+
+            <p>
+                Scientists carefully observe the world and
+                collect information about what they see.
+            </p>
+
+        </div>
+
+
+        <div class="concept-box">
+
+            <h3>02 — Question</h3>
+
+            <p>
+                Observations lead to questions that can be
+                investigated scientifically.
+            </p>
+
+        </div>
+
+
+        <div class="concept-box">
+
+            <h3>03 — Experiment</h3>
+
+            <p>
+                Experiments help test ideas and collect evidence.
+            </p>
+
+        </div>
+
+
+        <div class="concept-box">
+
+            <h3>04 — Analysis</h3>
+
+            <p>
+                Scientists analyze the results and use evidence
+                to understand what happened.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="challenge">
+
+            <h2 class="section-title">
+                Quick Science Challenge
+            </h2>
+
+            <p class="question">
+                Which organ pumps blood around the human body?
+            </p>
+
+            <div class="answers">
+
+                <button class="answer-btn"
+                    onclick="checkAnswer(this, 'wrong')">
+                    Lungs
+                </button>
+
+                <button class="answer-btn"
+                    onclick="checkAnswer(this, 'correct')">
+                    Heart
+                </button>
+
+                <button class="answer-btn"
+                    onclick="checkAnswer(this, 'wrong')">
+                    Brain
+                </button>
+
+                <button class="answer-btn"
+                    onclick="checkAnswer(this, 'wrong')">
+                    Stomach
+                </button>
+
+            </div>
+
+            <div class="result" id="result"></div>
+
+        </div>
+
+    </section>
+
+
+    <section style="text-align:center;">
+
+        <button class="complete-btn" onclick="completeLesson()">
+            ✓ Mark Science Complete
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 Knovera — Learn. Understand. Grow.</p>
+
+</footer>
+
+
+<script>
+
+    function checkAnswer(button, answer) {
+
+        const result = document.getElementById("result");
+
+        if (answer === "correct") {
+
+            result.textContent =
+                "✓ Correct! The heart pumps blood around the body.";
+
+            result.style.color = "#7fffb2";
+
+            updateProgress(10);
+
+        } else {
+
+            result.textContent =
+                "✗ Not quite. Try again!";
+
+            result.style.color = "#ff8f8f";
+
+        }
+
+    }
+
+
+    function completeLesson() {
+
+        updateProgress(100);
+
+        alert("Science lesson completed! 🔬");
+
+    }
+
+
+    function updateProgress(value) {
+
+        document.getElementById("progressBar").style.width =
+            value + "%";
+
+        document.getElementById("progressText").textContent =
+            value + "%";
+
+    }
+
+</script>
+
+</body>
+</html>
