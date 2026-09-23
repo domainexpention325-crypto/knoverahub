@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Knovera — Numbers & Operations</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b12;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(8, 11, 18, 0.88);
+            backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #7c5cff;
+        }
+
+        .back-btn {
+            color: #bfc5d2;
+            text-decoration: none;
+
+            padding: 10px 15px;
+
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 11px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: white;
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+
+            padding: 85px 7% 65px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: #7055ff;
+
+            filter: blur(180px);
+
+            opacity: 0.14;
+
+            top: -200px;
+            left: 15%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+        .chapter-label {
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 30px;
+
+            background: rgba(124,92,255,0.09);
+
+            border: 1px solid rgba(124,92,255,0.3);
+
+            color: #bcaeff;
+
+            font-size: 13px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 70px);
+
+            letter-spacing: -4px;
+
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #a996ff,
+                #6f51ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #929aaa;
+
+            max-width: 700px;
+
+            line-height: 1.7;
+
+            font-size: 17px;
+        }
+
+        /* PROGRESS */
+
+        .progress-box {
+            max-width: 650px;
+
+            margin-top: 35px;
+
+            padding: 22px;
+
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 19px;
+        }
+
+        .progress-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 12px;
+
+            font-size: 14px;
+        }
+
+        .progress-top span:last-child {
+            color: #a997ff;
+
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 8px;
+
+            width: 100%;
+
+            background: rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 25%;
+
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #7658ff,
+                #9b86ff
+            );
+
+            border-radius: 20px;
+        }
+
+        /* MAIN */
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 45px);
+
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #858d9f;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+        }
+
+        /* CONCEPT */
+
+        .concept {
+            display: grid;
+
+            grid-template-columns: 1.4fr 0.8fr;
+
+            gap: 22px;
+        }
+
+        .concept-card {
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.065),
+                    rgba(255,255,255,0.025)
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 22px;
+        }
+
+        .concept-card h3 {
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .concept-card p {
+            color: #929aaa;
+
+            line-height: 1.8;
+
+            font-size: 15px;
+        }
+
+        /* NUMBER TYPES */
+
+        .number-types {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .type-card {
+            padding: 25px;
+
+            background: #0e121b;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 19px;
+
+            transition: 0.3s;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(124,92,255,0.35);
+        }
+
+        .type-symbol {
+            font-size: 28px;
+
+            margin-bottom: 16px;
+        }
+
+        .type-card h3 {
+            margin-bottom: 9px;
+        }
+
+        .type-card p {
+            color: #858d9f;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+        /* OPERATIONS */
+
+        .operations {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+        .operation-card {
+            padding: 25px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 19px;
+        }
+
+        .operation-symbol {
+            font-size: 35px;
+
+            margin-bottom: 14px;
+        }
+
+        .operation-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .operation-card p {
+            color: #858d9f;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        /* EXAMPLES */
+
+        .examples {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .example-card {
+            padding: 27px;
+
+            background: #0e121b;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+        }
+
+        .example-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .example {
+            padding: 15px;
+
+            background: rgba(124,92,255,0.07);
+
+            border-radius: 12px;
+
+            color: #d5d0ff;
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+        }
+
+        .example-card p {
+            color: #858d9f;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+        /* PRACTICE */
+
+        .practice-box {
+            max-width: 800px;
+
+            margin: auto;
+
+            padding: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111622,
+                    #0c1018
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 24px;
+        }
+
+        .practice-box h3 {
+            font-size: 23px;
+
+            margin-bottom: 25px;
+        }
+
+        .answers {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .answer {
+            width: 100%;
+
+            padding: 15px;
+
+            text-align: left;
+
+            color: white;
+
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .answer:hover {
+            background: rgba(124,92,255,0.15);
+        }
+
+        #result {
+            margin-top: 20px;
+
+            font-weight: 700;
+
+            color: #a997ff;
+        }
+
+        /* COMPLETE BUTTON */
+
+        .complete-area {
+            text-align: center;
+
+            padding-top: 10px;
+        }
+
+        .complete-btn {
+            padding: 15px 24px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background: linear-gradient(
+                135deg,
+                #7658ff,
+                #5637dc
+            );
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* NEXT */
+
+        .next-section {
+            text-align: center;
+
+            padding-top: 30px;
+        }
+
+        .next-section p {
+            color: #858d9f;
+
+            margin-bottom: 22px;
+        }
+
+        .next-btn {
+            display: inline-block;
+
+            padding: 13px 20px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.05);
+
+            transition: 0.3s;
+        }
+
+        .next-btn:hover {
+            background: #6f51ff;
+
+            border-color: #6f51ff;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 7%;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #656d7e;
+
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 70px 5% 55px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .concept,
+            .examples {
+                grid-template-columns: 1fr;
+            }
+
+            .number-types {
+                grid-template-columns: 1fr;
+            }
+
+            .operations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .operations {
+                grid-template-columns: 1fr;
+            }
+
+            .practice-box {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Kno<span>vera</span>
+        </div>
+
+        <!-- BACK TO MATH -->
+
+        <a href="math.html" class="back-btn">
+            ← Mathematics
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="chapter-label">
+                Mathematics • Chapter 01
+            </div>
+
+            <h1>
+                Numbers &
+                <span class="gradient-text">
+                    Operations
+                </span>
+            </h1>
+
+            <p>
+                Numbers are the foundation of mathematics.
+                Learn how numbers work, how they are classified
+                and how we use mathematical operations to solve
+                problems.
+            </p>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-box">
+
+                <div class="progress-top">
+
+                    <span>
+                        Chapter Progress
+                    </span>
+
+                    <span>
+                        25%
+                    </span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONCEPT -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                What are Numbers?
+            </h2>
+
+            <p>
+                Let's start with the basic idea.
+            </p>
+
+        </div>
+
+
+        <div class="concept">
+
+            <div class="concept-card">
+
+                <h3>
+                    Understanding Numbers
+                </h3>
+
+                <p>
+                    Numbers are mathematical symbols used to
+                    represent quantities and values. We use them
+                    every day — while counting objects, measuring
+                    things, comparing quantities and solving
+                    problems.
+                </p>
+
+                <br>
+
+                <p>
+                    Examples include 1, 2, 3, 10, 50, 100 and many
+                    more. Numbers can be positive, negative,
+                    whole, fractional or decimal depending on
+                    what we are representing.
+                </p>
+
+            </div>
+
+
+            <div class="concept-card">
+
+                <h3>
+                    Example
+                </h3>
+
+                <p>
+                    If you have 5 apples, the number
+                    <strong>5</strong> represents the quantity
+                    of apples.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NUMBER TYPES -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                Types of Numbers
+            </h2>
+
+            <p>
+                Numbers can be grouped into different categories.
+            </p>
+
+        </div>
+
+
+        <div class="number-types">
+
+
+            <div class="type-card">
+
+                <div class="type-symbol">
+                    🔢
+                </div>
+
+                <h3>
+                    Natural Numbers
+                </h3>
+
+                <p>
+                    Counting numbers such as
+                    1, 2, 3, 4, 5...
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <div class="type-symbol">
+                    0️⃣
+                </div>
+
+                <h3>
+                    Whole Numbers
+                </h3>
+
+                <p>
+                    Natural numbers together with
+                    zero: 0, 1, 2, 3...
+                </p>
+
+            </div>
+
+
+            <div class="type-card">
+
+                <div class="type-symbol">
+                    ➖
+                </div>
+
+                <h3>
+                    Integers
+                </h3>
+
+                <p>
+                    Positive and negative whole numbers,
+                    including zero.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OPERATIONS -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                Four Basic Operations
+            </h2>
+
+            <p>
+                These operations are used throughout mathematics.
+            </p>
+
+        </div>
+
+
+        <div class="operations">
+
+
+            <div class="operation-card">
+
+                <div class="operation-symbol">
+                    +
+                </div>
+
+                <h3>
+                    Addition
+                </h3>
+
+                <p>
+                    Combining quantities together.
+                </p>
+
+            </div>
+
+
+            <div class="operation-card">
+
+                <div class="operation-symbol">
+                    −
+                </div>
+
+                <h3>
+                    Subtraction
+                </h3>
+
+                <p>
+                    Finding the difference between quantities.
+                </p>
+
+            </div>
+
+
+            <div class="operation-card">
+
+                <div class="operation-symbol">
+                    ×
+                </div>
+
+                <h3>
+                    Multiplication
+                </h3>
+
+                <p>
+                    Repeated addition of a number.
+                </p>
+
+            </div>
+
+
+            <div class="operation-card">
+
+                <div class="operation-symbol">
+                    ÷
+                </div>
+
+                <h3>
+                    Division
+                </h3>
+
+                <p>
+                    Splitting a quantity into equal parts.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXAMPLES -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                Learn With Examples
+            </h2>
+
+            <p>
+                See how basic operations work.
+            </p>
+
+        </div>
+
+
+        <div class="examples">
+
+
+            <div class="example-card">
+
+                <h3>
+                    Addition
+                </h3>
+
+                <div class="example">
+                    7 + 5 = 12
+                </div>
+
+                <p>
+                    We combine 7 and 5 to get a total of 12.
+                </p>
+
+            </div>
+
+
+            <div class="example-card">
+
+                <h3>
+                    Subtraction
+                </h3>
+
+                <div class="example">
+                    15 − 6 = 9
+                </div>
+
+                <p>
+                    Taking 6 away from 15 leaves us with 9.
+                </p>
+
+            </div>
+
+
+            <div class="example-card">
+
+                <h3>
+                    Multiplication
+                </h3>
+
+                <div class="example">
+                    4 × 6 = 24
+                </div>
+
+                <p>
+                    6 added four times gives 24.
+                </p>
+
+            </div>
+
+
+            <div class="example-card">
+
+                <h3>
+                    Division
+                </h3>
+
+                <div class="example">
+                    20 ÷ 4 = 5
+                </div>
+
+                <p>
+                    20 divided into 4 equal groups gives 5.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                Practice
+            </h2>
+
+            <p>
+                Let's see what you remember.
+            </p>
+
+        </div>
+
+
+        <div class="practice-box">
+
+            <h3>
+                What is 24 ÷ 6?
+            </h3>
+
+
+            <div class="answers">
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(this, false)">
+
+                    A. 3
+
+                </button>
+
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(this, true)">
+
+                    B. 4
+
+                </button>
+
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(this, false)">
+
+                    C. 5
+
+                </button>
+
+
+                <button
+                    class="answer"
+                    onclick="checkAnswer(this, false)">
+
+                    D. 6
+
+                </button>
+
+            </div>
+
+
+            <div id="result"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPLETE -->
+
+    <section>
+
+        <div class="complete-area">
+
+            <button
+                class="complete-btn"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson Complete
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEXT LESSON -->
+
+    <section class="next-section">
+
+        <div class="section-title">
+
+            <h2>
+                What's Next?
+            </h2>
+
+            <p>
+                Continue your Mathematics journey with the
+                next chapter.
+            </p>
+
+        </div>
+
+        <!-- Future conne
