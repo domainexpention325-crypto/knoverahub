@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Knovera | English</title>
+<title>English — Knovera</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -15,129 +14,132 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#07120d;
-    color:#f4fff8;
-    line-height:1.6;
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(180,35,55,.18), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(120,20,35,.16), transparent 30%),
+        #090708;
+    color:#f8eeee;
+    min-height:100vh;
 }
 
 nav{
-    height:70px;
+    height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 7%;
-    background:rgba(7,18,13,.92);
-    border-bottom:1px solid rgba(102,255,153,.15);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(10,7,8,.78);
+    backdrop-filter:blur(14px);
     position:sticky;
     top:0;
-    z-index:10;
-    backdrop-filter:blur(12px);
+    z-index:100;
 }
 
 .logo{
-    font-size:24px;
+    font-size:25px;
     font-weight:800;
     letter-spacing:1px;
-    color:#66ff99;
+    color:#ffb0b8;
 }
 
-.back-btn{
+.back{
     text-decoration:none;
-    color:#d9ffe6;
-    border:1px solid rgba(102,255,153,.25);
-    padding:9px 16px;
+    color:#d9bfc3;
+    font-size:14px;
+    padding:10px 16px;
+    border:1px solid rgba(255,255,255,.1);
     border-radius:12px;
     transition:.3s;
 }
 
-.back-btn:hover{
-    background:#66ff99;
-    color:#07120d;
+.back:hover{
+    color:#fff;
+    border-color:#9e3041;
+    background:rgba(130,25,40,.18);
+}
+
+.container{
+    width:88%;
+    max-width:1100px;
+    margin:auto;
 }
 
 .hero{
-    padding:70px 7% 45px;
-    text-align:center;
+    padding:75px 0 45px;
 }
 
 .badge{
     display:inline-block;
-    padding:7px 14px;
+    padding:8px 13px;
     border-radius:30px;
-    background:rgba(102,255,153,.1);
-    border:1px solid rgba(102,255,153,.25);
-    color:#66ff99;
+    background:rgba(135,25,42,.16);
+    border:1px solid rgba(255,100,120,.18);
+    color:#ff9eaa;
     font-size:13px;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 h1{
-    font-size:clamp(38px,8vw,70px);
+    font-size:clamp(40px,7vw,70px);
     line-height:1.05;
-    margin-bottom:18px;
+    margin-bottom:20px;
+    max-width:850px;
 }
 
 .gradient-text{
-    background:linear-gradient(90deg,#66ff99,#b6ffd0);
+    background:linear-gradient(90deg,#fff,#ff9eaa,#a93447);
     -webkit-background-clip:text;
     color:transparent;
 }
 
 .hero p{
-    max-width:680px;
-    margin:auto;
-    color:#a8b8ae;
+    color:#bca9ad;
+    max-width:700px;
+    line-height:1.7;
     font-size:17px;
 }
 
 .progress-box{
-    width:86%;
-    max-width:850px;
-    margin:20px auto 55px;
+    margin-top:30px;
+    max-width:500px;
 }
 
 .progress-info{
     display:flex;
     justify-content:space-between;
+    color:#cbb5b9;
+    font-size:13px;
     margin-bottom:9px;
-    color:#a8b8ae;
-    font-size:14px;
 }
 
-.progress-bg{
-    width:100%;
+.progress{
     height:9px;
-    background:#14241a;
+    background:#211417;
     border-radius:20px;
     overflow:hidden;
 }
 
-.progress{
-    width:100%;
+.progress-bar{
     height:100%;
-    background:linear-gradient(90deg,#39e879,#a0ffbd);
+    width:100%;
+    background:linear-gradient(90deg,#731d2d,#d94c62);
     border-radius:20px;
-    transition:.5s;
-}
-
-.container{
-    width:86%;
-    max-width:1050px;
-    margin:auto;
+    box-shadow:0 0 15px rgba(190,45,65,.4);
 }
 
 .section{
-    margin-bottom:55px;
+    padding:35px 0;
 }
 
-.section h2{
-    font-size:30px;
-    margin-bottom:14px;
+.section-title{
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.section-intro{
-    color:#9eafa5;
+.section-subtitle{
+    color:#a9969a;
     margin-bottom:25px;
 }
 
@@ -150,203 +152,187 @@ h1{
 .card{
     background:linear-gradient(
         145deg,
-        rgba(102,255,153,.08),
+        rgba(115,25,40,.18),
         rgba(255,255,255,.025)
     );
-    border:1px solid rgba(102,255,153,.14);
+    border:1px solid rgba(255,120,140,.11);
     border-radius:20px;
-    padding:24px;
+    padding:25px;
     transition:.3s;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
 }
 
 .card:hover{
     transform:translateY(-5px);
-    border-color:rgba(102,255,153,.4);
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    border-color:rgba(230,75,95,.35);
+    box-shadow:0 20px 45px rgba(100,15,30,.22);
 }
 
 .icon{
-    font-size:32px;
-    margin-bottom:12px;
+    width:46px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(150,30,48,.2);
+    border:1px solid rgba(255,100,120,.12);
+    font-size:21px;
+    margin-bottom:17px;
 }
 
 .card h3{
-    margin-bottom:8px;
+    margin-bottom:9px;
+    font-size:19px;
 }
 
 .card p{
-    color:#9eafa5;
+    color:#aa989c;
+    line-height:1.6;
     font-size:14px;
 }
 
-.concept{
-    background:#0b1b11;
-    border:1px solid rgba(102,255,153,.12);
+.lesson{
+    margin-top:18px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.07);
     border-radius:20px;
-    padding:28px;
+    padding:25px;
 }
 
-.concept h3{
-    color:#66ff99;
-    margin-bottom:10px;
+.lesson h3{
+    margin-bottom:12px;
+    color:#ffb1ba;
 }
 
-.concept p{
-    color:#a8b8ae;
-}
-
-.examples{
-    margin-top:20px;
-    display:grid;
-    gap:12px;
+.lesson p{
+    color:#b9a8ab;
+    line-height:1.7;
 }
 
 .example{
-    padding:17px 20px;
-    background:#0b1b11;
-    border-left:3px solid #66ff99;
-    border-radius:12px;
-    color:#c9d8ce;
-}
-
-.example strong{
-    color:#66ff99;
+    margin-top:15px;
+    padding:16px;
+    border-left:3px solid #a83247;
+    background:rgba(120,25,40,.11);
+    border-radius:10px;
+    color:#eadbdd;
 }
 
 .challenge{
-    background:linear-gradient(
-        145deg,
-        rgba(102,255,153,.12),
-        rgba(102,255,153,.03)
-    );
-    border:1px solid rgba(102,255,153,.2);
-    border-radius:24px;
+    margin-top:30px;
     padding:30px;
-    text-align:center;
+    border-radius:24px;
+    background:
+        linear-gradient(135deg,
+        rgba(120,25,40,.25),
+        rgba(255,255,255,.025));
+    border:1px solid rgba(255,100,120,.14);
 }
 
 .question{
     font-size:20px;
-    margin:15px 0 22px;
+    font-weight:700;
+    margin-bottom:20px;
 }
 
 .options{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
     gap:12px;
-    max-width:500px;
-    margin:auto;
 }
 
 .option{
-    padding:13px;
-    border:1px solid rgba(102,255,153,.2);
-    background:#0b1b11;
-    color:#f4fff8;
-    border-radius:12px;
+    padding:15px 18px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.025);
+    color:#eee;
     cursor:pointer;
     transition:.25s;
+    text-align:left;
 }
 
 .option:hover{
-    background:#66ff99;
-    color:#07120d;
+    background:rgba(150,30,48,.15);
+    border-color:rgba(255,100,120,.3);
 }
 
-#result{
-    margin-top:18px;
-    min-height:25px;
-    font-weight:bold;
+.correct{
+    background:rgba(30,130,75,.18)!important;
+    border-color:rgba(70,220,130,.35)!important;
+}
+
+.wrong{
+    background:rgba(160,30,45,.2)!important;
+    border-color:rgba(255,80,100,.35)!important;
 }
 
 .complete-btn{
-    display:block;
-    margin:30px auto 0;
-    padding:13px 22px;
+    margin-top:30px;
+    padding:15px 25px;
     border:none;
-    border-radius:13px;
-    background:#66ff99;
-    color:#07120d;
-    font-weight:bold;
+    border-radius:14px;
+    background:linear-gradient(135deg,#7b2031,#c43d54);
+    color:white;
+    font-size:15px;
+    font-weight:700;
     cursor:pointer;
+    box-shadow:0 10px 25px rgba(120,20,40,.25);
     transition:.3s;
 }
 
 .complete-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(102,255,153,.2);
+    box-shadow:0 14px 30px rgba(150,30,50,.35);
 }
 
-.next{
+.footer{
     text-align:center;
-    margin:65px 0;
-}
-
-.next a{
-    display:inline-block;
-    text-decoration:none;
-    color:#07120d;
-    background:#66ff99;
-    padding:14px 24px;
-    border-radius:14px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.next a:hover{
-    transform:translateY(-3px);
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#65736a;
-    border-top:1px solid rgba(255,255,255,.06);
+    padding:55px 0 35px;
+    color:#796c6f;
+    font-size:13px;
 }
 
 @media(max-width:600px){
-
     nav{
         padding:0 5%;
     }
 
-    .hero{
-        padding:55px 6% 35px;
-    }
-
     .container{
-        width:88%;
+        width:90%;
     }
 
-    .options{
-        grid-template-columns:1fr;
+    .hero{
+        padding-top:55px;
     }
 
+    .card{
+        padding:21px;
+    }
+
+    h1{
+        font-size:43px;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
 <nav>
+    <div class="logo">Knovera</div>
 
-    <div class="logo">
-        Knovera
-    </div>
-
-    <a href="subjects.html" class="back-btn">
+    <a href="subjects.html" class="back">
         ← Subjects
     </a>
-
 </nav>
 
 
+<main class="container">
+
 <section class="hero">
 
-    <div class="badge">
-        LANGUAGE • ENGLISH
-    </div>
+    <span class="badge">ENGLISH • LANGUAGE & COMMUNICATION</span>
 
     <h1>
         Master the
@@ -354,102 +340,66 @@ footer{
     </h1>
 
     <p>
-        Build stronger vocabulary, understand grammar,
-        improve sentence formation and communicate with confidence.
+        Build stronger grammar, vocabulary, communication and writing
+        skills through simple concepts and practical examples.
     </p>
+
+    <div class="progress-box">
+
+        <div class="progress-info">
+            <span>English Progress</span>
+            <span id="progressText">100%</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+    </div>
 
 </section>
 
 
-<div class="progress-box">
-
-    <div class="progress-info">
-
-        <span>English Journey</span>
-
-        <span id="progressText">
-            100%
-        </span>
-
-    </div>
-
-    <div class="progress-bg">
-
-        <div class="progress" id="progressBar"></div>
-
-    </div>
-
-</div>
-
-
-<main class="container">
-
-
-<!-- BASICS -->
-
 <section class="section">
 
-    <h2>📖 English Fundamentals</h2>
+    <h2 class="section-title">English Fundamentals</h2>
 
-    <p class="section-intro">
-        Strong English starts with understanding the building blocks
-        of a sentence.
+    <p class="section-subtitle">
+        The core skills that make your English stronger.
     </p>
 
     <div class="grid">
 
         <div class="card">
-
-            <div class="icon">🧱</div>
-
+            <div class="icon">📖</div>
             <h3>Grammar</h3>
-
             <p>
-                Grammar explains how words are arranged and used
-                correctly in sentences.
+                Learn how words and sentences are structured correctly.
             </p>
-
         </div>
 
-
         <div class="card">
-
-            <div class="icon">🗣️</div>
-
+            <div class="icon">💬</div>
             <h3>Communication</h3>
-
             <p>
-                English helps us express ideas, thoughts and information
-                clearly.
+                Improve the way you express ideas clearly and confidently.
             </p>
-
         </div>
 
-
         <div class="card">
-
-            <div class="icon">📚</div>
-
+            <div class="icon">🔤</div>
             <h3>Vocabulary</h3>
-
             <p>
-                Vocabulary is the collection of words you know and use.
+                Discover useful words and understand how to use them.
             </p>
-
         </div>
 
-
         <div class="card">
-
             <div class="icon">✍️</div>
-
             <h3>Writing</h3>
-
             <p>
-                Good writing combines correct grammar, clear ideas
-                and suitable vocabulary.
+                Learn to create clear, meaningful and well-structured writing.
             </p>
-
         </div>
 
     </div>
@@ -457,83 +407,56 @@ footer{
 </section>
 
 
-<!-- PARTS OF SPEECH -->
-
 <section class="section">
 
-    <h2>🔤 Parts of Speech</h2>
+    <h2 class="section-title">Parts of Speech</h2>
+
+    <p class="section-subtitle">
+        Words play different roles inside a sentence.
+    </p>
 
     <div class="grid">
 
         <div class="card">
-
+            <div class="icon">N</div>
             <h3>Noun</h3>
-
-            <p>
-                Names a person, place, thing or idea.
-                Example: school, teacher, freedom.
-            </p>
-
+            <p>A person, place, thing or idea.</p>
+            <div class="example">Example: teacher, school, book</div>
         </div>
 
-
         <div class="card">
-
+            <div class="icon">P</div>
             <h3>Pronoun</h3>
-
-            <p>
-                Takes the place of a noun.
-                Example: he, she, they, it.
-            </p>
-
+            <p>A word used instead of a noun.</p>
+            <div class="example">Example: he, she, they</div>
         </div>
 
-
         <div class="card">
-
+            <div class="icon">V</div>
             <h3>Verb</h3>
-
-            <p>
-                Shows an action or state.
-                Example: run, learn, is.
-            </p>
-
+            <p>A word that shows an action or state.</p>
+            <div class="example">Example: run, eat, think</div>
         </div>
 
-
         <div class="card">
-
+            <div class="icon">A</div>
             <h3>Adjective</h3>
-
-            <p>
-                Describes a noun.
-                Example: bright, fast, beautiful.
-            </p>
-
+            <p>A word that describes a noun.</p>
+            <div class="example">Example: beautiful, tall, smart</div>
         </div>
 
-
         <div class="card">
-
+            <div class="icon">Ad</div>
             <h3>Adverb</h3>
-
-            <p>
-                Gives more information about an action.
-                Example: quickly, slowly, carefully.
-            </p>
-
+            <p>A word that describes a verb or adjective.</p>
+            <div class="example">Example: quickly, slowly, very</div>
         </div>
 
-
         <div class="card">
-
+            <div class="icon">Pr</div>
             <h3>Preposition</h3>
-
-            <p>
-                Shows a relationship between words.
-                Example: in, on, under, beside.
-            </p>
-
+            <p>Shows a relationship between words.</p>
+            <div class="example">Example: in, on, under</div>
         </div>
 
     </div>
@@ -541,36 +464,26 @@ footer{
 </section>
 
 
-<!-- SENTENCE -->
-
 <section class="section">
 
-    <h2>🧩 Building a Sentence</h2>
+    <h2 class="section-title">Build a Sentence</h2>
 
-    <div class="concept">
+    <p class="section-subtitle">
+        A simple sentence can follow this structure:
+    </p>
+
+    <div class="lesson">
 
         <h3>Subject + Verb + Object</h3>
 
         <p>
-            A simple sentence can often be understood through
-            its subject, verb and object.
+            The subject performs the action, the verb shows the action,
+            and the object receives the action.
         </p>
 
-        <div class="examples">
-
-            <div class="example">
-                <strong>Subject:</strong> Rehaan
-                &nbsp;→&nbsp;
-                <strong>Verb:</strong> learns
-                &nbsp;→&nbsp;
-                <strong>Object:</strong> English
-            </div>
-
-            <div class="example">
-                <strong>Complete sentence:</strong>
-                Rehaan learns English.
-            </div>
-
+        <div class="example">
+            <strong>She</strong> + <strong>reads</strong> +
+            <strong>a book.</strong>
         </div>
 
     </div>
@@ -578,171 +491,153 @@ footer{
 </section>
 
 
-<!-- TENSES -->
-
 <section class="section">
 
-    <h2>⏳ Basic Tenses</h2>
+    <h2 class="section-title">Basic Tenses</h2>
+
+    <p class="section-subtitle">
+        Tenses tell us when an action happens.
+    </p>
 
     <div class="grid">
 
         <div class="card">
-
-            <div class="icon">🟢</div>
-
+            <div class="icon">1</div>
             <h3>Present</h3>
-
             <p>
-                Used for actions happening now or regularly.
-                <br><br>
-                Example: I learn English.
+                Used for actions that happen now or regularly.
             </p>
-
+            <div class="example">
+                She goes to school.
+            </div>
         </div>
 
-
         <div class="card">
-
-            <div class="icon">🔵</div>
-
+            <div class="icon">2</div>
             <h3>Past</h3>
-
             <p>
-                Used for actions that happened before.
-                <br><br>
-                Example: I learned English.
+                Used for actions that already happened.
             </p>
-
+            <div class="example">
+                She went to school.
+            </div>
         </div>
 
-
         <div class="card">
-
-            <div class="icon">🟣</div>
-
+            <div class="icon">3</div>
             <h3>Future</h3>
-
             <p>
                 Used for actions that will happen later.
-                <br><br>
-                Example: I will learn English.
             </p>
-
+            <div class="example">
+                She will go to school.
+            </div>
         </div>
 
     </div>
 
 </section>
 
-
-<!-- CHALLENGE -->
 
 <section class="section">
 
     <div class="challenge">
 
-        <h2>⚡ Quick English Challenge</h2>
+        <div class="question">
+            Quick Challenge
+        </div>
 
-        <p class="question">
+        <p style="color:#a9969a;margin-bottom:20px;">
             Which sentence is grammatically correct?
         </p>
 
         <div class="options">
 
-            <button class="option" onclick="checkAnswer(false)">
+            <button class="option" onclick="checkAnswer(this,false)">
                 She go to school.
             </button>
 
-            <button class="option" onclick="checkAnswer(true)">
+            <button class="option" onclick="checkAnswer(this,true)">
                 She goes to school.
             </button>
 
-            <button class="option" onclick="checkAnswer(false)">
-                She going school.
+            <button class="option" onclick="checkAnswer(this,false)">
+                She going to school.
             </button>
 
-            <button class="option" onclick="checkAnswer(false)">
+            <button class="option" onclick="checkAnswer(this,false)">
                 She gone to school.
             </button>
 
         </div>
 
-        <div id="result"></div>
+        <p id="result" style="margin-top:18px;font-weight:600;"></p>
 
     </div>
 
 </section>
 
 
-<button class="complete-btn" onclick="completeLesson()">
-    ✓ Mark English Complete
-</button>
+<section class="section" style="text-align:center;">
+
+    <button class="complete-btn" onclick="completeLesson()">
+        ✓ Complete English
+    </button>
+
+</section>
 
 
-<div class="next">
+<section class="section" style="text-align:center;">
 
-    <a href="subjects.html">
+    <a href="subjects.html"
+       class="back"
+       style="display:inline-block;">
         ← Back to Subjects
     </a>
 
-</div>
-
+</section>
 
 </main>
 
 
-<footer>
+<footer class="footer">
     © 2026 Knovera • Learn. Understand. Grow.
 </footer>
 
 
 <script>
 
-let progress = 100;
+function checkAnswer(button, correct){
 
+    const options = document.querySelectorAll(".option");
 
-function updateProgress(value){
+    options.forEach(option => {
+        option.classList.remove("correct","wrong");
+    });
 
-    progress = value;
-
-    document.getElementById("progressBar").style.width =
-        progress + "%";
-
-    document.getElementById("progressText").innerText =
-        progress + "%";
-
-}
-
-
-function checkAnswer(correct){
-
-    const result =
-        document.getElementById("result");
+    const result = document.getElementById("result");
 
     if(correct){
 
-        result.innerText =
-            "✓ Correct! “She goes to school.” is grammatically correct.";
+        button.classList.add("correct");
 
-        result.style.color =
-            "#66ff99";
+        result.textContent = "✓ Correct! Great job.";
+        result.style.color = "#78e6a5";
 
     }else{
 
-        result.innerText =
-            "✗ Not quite. Try another answer.";
+        button.classList.add("wrong");
 
-        result.style.color =
-            "#ff8f8f";
-
+        result.textContent = "✗ Not quite. Try again.";
+        result.style.color = "#ff8797";
     }
-
 }
 
 
 function completeLesson(){
 
-    updateProgress(100);
+    document.getElementById("progressBar").style.width = "100%";
+    document.getElementById("progressText").textContent = "100%";
 
     alert("English completed! 🎉");
 
