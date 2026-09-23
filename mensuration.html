@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knovera | Mensuration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#07111f;
+    color:#f5f7ff;
+    line-height:1.6;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    background:rgba(7,17,31,0.9);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#ffffff;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#b9c5d8;
+    font-size:14px;
+}
+
+.back-btn:hover{
+    color:#ffffff;
+}
+
+.hero{
+    text-align:center;
+    padding:70px 20px 45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:20px;
+    background:rgba(99,102,241,0.12);
+    border:1px solid rgba(99,102,241,0.3);
+    color:#aeb5ff;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(38px,8vw,64px);
+    line-height:1.1;
+    margin-bottom:18px;
+    background:linear-gradient(90deg,#ffffff,#9fa8ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#9eabc0;
+    font-size:17px;
+}
+
+.progress-box{
+    max-width:700px;
+    margin:0 auto 45px;
+    padding:20px;
+    background:#0d1a2c;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    color:#aebbd0;
+    font-size:14px;
+}
+
+.progress{
+    height:9px;
+    background:#18263a;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:85%;
+    height:100%;
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    border-radius:20px;
+}
+
+.container{
+    width:min(1000px,90%);
+    margin:auto;
+}
+
+.section{
+    margin-bottom:55px;
+}
+
+.section h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.section p{
+    color:#a9b5c8;
+    font-size:16px;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:25px;
+}
+
+.card{
+    background:#0d1a2c;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:25px;
+    transition:0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(139,92,246,0.45);
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.card p{
+    font-size:14px;
+}
+
+.formula{
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    background:#07111f;
+    color:#c5caff;
+    font-weight:bold;
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.example{
+    margin-top:20px;
+    padding:22px;
+    background:#0d1a2c;
+    border-radius:18px;
+    border-left:4px solid #6366f1;
+}
+
+.challenge{
+    text-align:center;
+    background:linear-gradient(135deg,#101d32,#0c1728);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:35px 20px;
+}
+
+.challenge h2{
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:22px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.option{
+    padding:12px 22px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:#16243a;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#223653;
+}
+
+#result{
+    margin-top:18px;
+    font-weight:bold;
+    min-height:24px;
+}
+
+.complete{
+    text-align:center;
+    margin:50px 0;
+}
+
+.complete button{
+    border:none;
+    padding:15px 25px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#6366f1,#8b5cf6);
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.complete button:hover{
+    transform:translateY(-2px);
+}
+
+.next{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.next-btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 24px;
+    border-radius:14px;
+    background:#111f34;
+    color:#ffffff;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#718097;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+    nav{
+        padding:18px 5%;
+    }
+
+    .hero{
+        padding:55px 18px 35px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .card-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section h2{
+        font-size:26px;
+    }
+
+    .container{
+        width:90%;
+    }
+
+    .progress-box{
+        width:90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Knovera</div>
+
+    <a href="geometry.html" class="back-btn">
+        ← Geometry
+    </a>
+</nav>
+
+<section class="hero">
+    <div class="badge">Mathematics • Chapter 5</div>
+
+    <h1>Mensuration</h1>
+
+    <p>
+        Learn how to calculate the area, perimeter and volume
+        of different shapes and objects.
+    </p>
+</section>
+
+<div class="progress-box">
+    <div class="progress-info">
+        <span>Learning Progress</span>
+        <span id="progressText">85%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+
+<main class="container">
+
+<section class="section">
+
+    <h2>What is Mensuration?</h2>
+
+    <p>
+        Mensuration is the branch of mathematics that deals with
+        measuring geometric figures. It helps us calculate things
+        such as perimeter, area and volume.
+    </p>
+
+    <div class="example">
+        <strong>Example:</strong><br>
+        If a rectangular table is 5 m long and 3 m wide,
+        we can calculate its area using a simple formula.
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Important Concepts</h2>
+
+    <div class="card-grid">
+
+        <div class="card">
+            <h3>Perimeter</h3>
+
+            <p>
+                Perimeter is the total distance around a
+                two-dimensional shape.
+            </p>
+
+            <div class="formula">
+                Rectangle = 2 × (Length + Width)
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>Area</h3>
+
+            <p>
+                Area tells us how much surface is covered
+                inside a two-dimensional shape.
+            </p>
+
+            <div class="formula">
+                Rectangle = Length × Width
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>Volume</h3>
+
+            <p>
+                Volume tells us how much space a
+                three-dimensional object occupies.
+            </p>
+
+            <div class="formula">
+                Cuboid = Length × Width × Height
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Useful Formulas</h2>
+
+    <div class="card-grid">
+
+        <div class="card">
+            <h3>Square</h3>
+
+            <p>Area of a square:</p>
+
+            <div class="formula">
+                Side × Side
+            </div>
+
+            <p style="margin-top:12px;">
+                Perimeter:
+            </p>
+
+            <div class="formula">
+                4 × Side
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>Rectangle</h3>
+
+            <p>Area:</p>
+
+            <div class="formula">
+                Length × Width
+            </div>
+
+            <p style="margin-top:12px;">
+                Perimeter:
+            </p>
+
+            <div class="formula">
+                2 × (Length + Width)
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>Cube</h3>
+
+            <p>Volume:</p>
+
+            <div class="formula">
+                Side × Side × Side
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Let's Solve an Example</h2>
+
+    <div class="example">
+
+        <strong>Question:</strong>
+
+        <p style="margin-top:10px;">
+            A rectangle has a length of 8 cm and a width of 5 cm.
+            What is its area?
+        </p>
+
+        <p style="margin-top:15px;">
+            Area = Length × Width
+        </p>
+
+        <p>
+            Area = 8 × 5
+        </p>
+
+        <p>
+            Area = <strong>40 cm²</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="challenge">
+
+        <h2>Quick Challenge ⚡</h2>
+
+        <p>
+            A square has a side of 6 cm.
+            What is its area?
+        </p>
+
+        <div class="question">
+            Choose the correct answer:
+        </div>
+
+        <div class="options">
+
+            <button class="option" onclick="checkAnswer(24)">
+                24 cm²
+            </button>
+
+            <button class="option" onclick="checkAnswer(36)">
+                36 cm²
+            </button>
+
+            <button class="option" onclick="checkAnswer(12)">
+                12 cm²
+            </button>
+
+            <button class="option" onclick="checkAnswer(18)">
+                18 cm²
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<div class="complete">
+
+    <button onclick="completeLesson()">
+        ✓ Mark Lesson Complete
+    </button>
+
+</div>
+
+
+<div class="next">
+
+    <a href="ratio.html" class="next-btn">
+        Next Lesson → Ratio & Proportion
+    </a>
+
+</div>
+
+</main>
+
+
+<footer>
+    © 2026 Knovera • Learn. Understand. Grow.
+</footer>
+
+
+<script>
+
+function checkAnswer(answer){
+
+    const result = document.getElementById("result");
+
+    if(answer === 36){
+
+        result.textContent = "Correct! 🎉 Area = 6 × 6 = 36 cm²";
+
+    }else{
+
+        result.textContent = "Not quite. Remember: Area of a square = Side × Side.";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    document.getElementById("progressText").textContent = "100%";
+
+    alert("Lesson completed! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
