@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knovera | Earth Science</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#07120d;
+    color:#f4fff8;
+    line-height:1.6;
+}
+
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(7,18,13,.92);
+    border-bottom:1px solid rgba(102,255,153,.15);
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#66ff99;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#d9ffe6;
+    border:1px solid rgba(102,255,153,.25);
+    padding:9px 16px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+.hero{
+    padding:70px 7% 45px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(102,255,153,.1);
+    border:1px solid rgba(102,255,153,.25);
+    color:#66ff99;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(38px,8vw,70px);
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#66ff99,#b6ffd0);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+    color:#a8b8ae;
+    font-size:17px;
+}
+
+.progress-box{
+    width:86%;
+    max-width:850px;
+    margin:20px auto 55px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    color:#a8b8ae;
+    font-size:14px;
+}
+
+.progress-bg{
+    width:100%;
+    height:9px;
+    background:#14241a;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,#39e879,#a0ffbd);
+    border-radius:20px;
+    transition:.5s;
+}
+
+.container{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+}
+
+.section{
+    margin-bottom:55px;
+}
+
+.section h2{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.section-intro{
+    color:#9eafa5;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,.08),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(102,255,153,.14);
+    border-radius:20px;
+    padding:24px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(102,255,153,.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#9eafa5;
+    font-size:14px;
+}
+
+.concept{
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,.12);
+    border-radius:20px;
+    padding:28px;
+}
+
+.concept h3{
+    color:#66ff99;
+    margin-bottom:10px;
+}
+
+.concept p{
+    color:#a8b8ae;
+}
+
+.layers{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.layer{
+    padding:22px;
+    text-align:center;
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,.12);
+    border-radius:18px;
+}
+
+.layer strong{
+    display:block;
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.layer span{
+    color:#91a197;
+    font-size:13px;
+}
+
+.challenge{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,.12),
+        rgba(102,255,153,.03)
+    );
+    border:1px solid rgba(102,255,153,.2);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+}
+
+.question{
+    font-size:20px;
+    margin:15px 0 22px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    max-width:500px;
+    margin:auto;
+}
+
+.option{
+    padding:13px;
+    border:1px solid rgba(102,255,153,.2);
+    background:#0b1b11;
+    color:#f4fff8;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+#result{
+    margin-top:18px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+.complete-btn{
+    display:block;
+    margin:30px auto 0;
+    padding:13px 22px;
+    border:none;
+    border-radius:13px;
+    background:#66ff99;
+    color:#07120d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.complete-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(102,255,153,.2);
+}
+
+.next{
+    text-align:center;
+    margin:65px 0;
+}
+
+.next a{
+    display:inline-block;
+    text-decoration:none;
+    color:#07120d;
+    background:#66ff99;
+    padding:14px 24px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.next a:hover{
+    transform:translateY(-3px);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#65736a;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width:700px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .hero{
+        padding:55px 6% 35px;
+    }
+
+    .container{
+        width:88%;
+    }
+
+    .layers{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:430px){
+
+    .layers{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Knovera
+    </div>
+
+    <a href="science.html" class="back-btn">
+        ← Science
+    </a>
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="badge">
+        SCIENCE • EARTH SCIENCE
+    </div>
+
+    <h1>
+        Understand
+        <span class="gradient-text">Our Planet.</span>
+    </h1>
+
+    <p>
+        Explore Earth's layers, atmosphere, weather, rocks
+        and the forces that shape our planet.
+    </p>
+
+</section>
+
+
+<div class="progress-box">
+
+    <div class="progress-info">
+
+        <span>Science Journey</span>
+
+        <span id="progressText">
+            100%
+        </span>
+
+    </div>
+
+    <div class="progress-bg">
+
+        <div class="progress" id="progressBar"></div>
+
+    </div>
+
+</div>
+
+
+<main class="container">
+
+
+<!-- EARTH -->
+
+<section class="section">
+
+    <h2>🌍 What is Earth Science?</h2>
+
+    <div class="concept">
+
+        <h3>The science of our planet</h3>
+
+        <p>
+            Earth Science studies our planet, its structure,
+            atmosphere, oceans, rocks, weather and the natural
+            processes that constantly change Earth.
+        </p>
+
+        <br>
+
+        <p>
+            It helps us understand everything from earthquakes
+            and volcanoes to clouds, oceans and Earth's history.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- EARTH LAYERS -->
+
+<section class="section">
+
+    <h2>🌎 Layers of Earth</h2>
+
+    <p class="section-intro">
+        Earth is made of several major layers with different
+        properties and materials.
+    </p>
+
+    <div class="layers">
+
+        <div class="layer">
+
+            <strong>🌱 Crust</strong>
+
+            <span>
+                Earth's thin outer layer.
+            </span>
+
+        </div>
+
+
+        <div class="layer">
+
+            <strong>🔥 Mantle</strong>
+
+            <span>
+                A thick layer beneath the crust.
+            </span>
+
+        </div>
+
+
+        <div class="layer">
+
+            <strong>🧲 Outer Core</strong>
+
+            <span>
+                A liquid metallic layer.
+            </span>
+
+        </div>
+
+
+        <div class="layer">
+
+            <strong>🔴 Inner Core</strong>
+
+            <span>
+                Earth's extremely hot solid center.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ATMOSPHERE -->
+
+<section class="section">
+
+    <h2>☁️ Atmosphere & Weather</h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">☁️</div>
+
+            <h3>Atmosphere</h3>
+
+            <p>
+                The atmosphere is the layer of gases surrounding Earth.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌧️</div>
+
+            <h3>Weather</h3>
+
+            <p>
+                Weather describes short-term atmospheric conditions
+                such as temperature, rain and wind.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌪️</div>
+
+            <h3>Wind</h3>
+
+            <p>
+                Wind is moving air caused by differences in air pressure.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ROCKS -->
+
+<section class="section">
+
+    <h2>🪨 Rocks & Earth's Surface</h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">🌋</div>
+
+            <h3>Igneous Rocks</h3>
+
+            <p>
+                Form when molten rock cools and solidifies.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🏔️</div>
+
+            <h3>Sedimentary Rocks</h3>
+
+            <p>
+                Form from deposited and compacted sediments.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💎</div>
+
+            <h3>Metamorphic Rocks</h3>
+
+            <p>
+                Form when existing rocks change because of heat
+                and pressure.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGE -->
+
+<section class="section">
+
+    <div class="challenge">
+
+        <h2>⚡ Earth Science Challenge</h2>
+
+        <p class="question">
+            Which layer is Earth's outermost solid layer?
+        </p>
+
+        <div class="options">
+
+            <button class="option" onclick="checkAnswer(true)">
+                Crust
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Mantle
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Outer Core
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Inner Core
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPLETE -->
+
+<button class="complete-btn" onclick="completeLesson()">
+    ✓ Mark Earth Science Complete
+</button>
+
+
+<!-- END -->
+
+<div class="next">
+
+    <a href="science.html">
+        ← Back to Science
+    </a>
+
+</div>
+
+
+</main>
+
+
+<footer>
+    © 2026 Knovera • Learn. Understand. Grow.
+</footer>
+
+
+<script>
+
+let progress = 100;
+
+
+function updateProgress(value){
+
+    progress = value;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    document.getElementById("progressText").innerText =
+        progress + "%";
+
+}
+
+
+function checkAnswer(correct){
+
+    const result =
+        document.getElementById("result");
+
+    if(correct){
+
+        result.innerText =
+            "✓ Correct! The crust is Earth's outermost solid layer.";
+
+        result.style.color =
+            "#66ff99";
+
+    }else{
+
+        result.innerText =
+            "✗ Not quite. Try again!";
+
+        result.style.color =
+            "#ff8f8f";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    updateProgress(100);
+
+    alert("Earth Science completed! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
