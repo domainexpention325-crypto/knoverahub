@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Knovera | Chemistry</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#07120d;
+    color:#f4fff8;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+
+nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(7,18,13,0.9);
+    border-bottom:1px solid rgba(80,220,130,0.15);
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#66ff99;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#d9ffe6;
+    border:1px solid rgba(102,255,153,0.25);
+    padding:9px 16px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+/* HERO */
+
+.hero{
+    padding:70px 7% 45px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(102,255,153,0.1);
+    border:1px solid rgba(102,255,153,0.25);
+    color:#66ff99;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(38px,8vw,70px);
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#66ff99,#b6ffd0);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#a8b8ae;
+    font-size:17px;
+}
+
+/* PROGRESS */
+
+.progress-box{
+    width:86%;
+    max-width:850px;
+    margin:20px auto 55px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    color:#a8b8ae;
+    font-size:14px;
+}
+
+.progress-bg{
+    width:100%;
+    height:9px;
+    background:#14241a;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:50%;
+    height:100%;
+    background:linear-gradient(90deg,#39e879,#a0ffbd);
+    border-radius:20px;
+    transition:.5s;
+}
+
+/* CONTENT */
+
+.container{
+    width:86%;
+    max-width:1050px;
+    margin:auto;
+}
+
+.section{
+    margin-bottom:55px;
+}
+
+.section h2{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.section-intro{
+    color:#9eafa5;
+    margin-bottom:25px;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,0.08),
+        rgba(255,255,255,0.025)
+    );
+    border:1px solid rgba(102,255,153,0.14);
+    border-radius:20px;
+    padding:24px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(102,255,153,0.4);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#9eafa5;
+    font-size:14px;
+}
+
+/* CONCEPT */
+
+.concept{
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,0.12);
+    border-radius:20px;
+    padding:28px;
+}
+
+.concept h3{
+    color:#66ff99;
+    margin-bottom:10px;
+}
+
+.concept p{
+    color:#a8b8ae;
+}
+
+/* STATES */
+
+.states{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.state{
+    padding:22px;
+    text-align:center;
+    background:#0b1b11;
+    border:1px solid rgba(102,255,153,0.12);
+    border-radius:18px;
+}
+
+.state strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:6px;
+}
+
+.state span{
+    color:#91a197;
+    font-size:13px;
+}
+
+/* CHALLENGE */
+
+.challenge{
+    background:linear-gradient(
+        145deg,
+        rgba(102,255,153,0.12),
+        rgba(102,255,153,0.03)
+    );
+    border:1px solid rgba(102,255,153,0.2);
+    border-radius:24px;
+    padding:30px;
+    text-align:center;
+}
+
+.challenge h2{
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:20px;
+    margin:15px 0 22px;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    max-width:500px;
+    margin:auto;
+}
+
+.option{
+    padding:13px;
+    border:1px solid rgba(102,255,153,0.2);
+    background:#0b1b11;
+    color:#f4fff8;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.option:hover{
+    background:#66ff99;
+    color:#07120d;
+}
+
+/* RESULT */
+
+#result{
+    margin-top:18px;
+    font-weight:bold;
+    min-height:25px;
+}
+
+/* BUTTON */
+
+.complete-btn{
+    display:block;
+    margin:30px auto 0;
+    padding:13px 22px;
+    border:none;
+    border-radius:13px;
+    background:#66ff99;
+    color:#07120d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.complete-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(102,255,153,.2);
+}
+
+/* NEXT */
+
+.next{
+    text-align:center;
+    margin:65px 0;
+}
+
+.next a{
+    display:inline-block;
+    text-decoration:none;
+    color:#07120d;
+    background:#66ff99;
+    padding:14px 24px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.next a:hover{
+    transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#65736a;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .hero{
+        padding:55px 6% 35px;
+    }
+
+    .container{
+        width:88%;
+    }
+
+    .states{
+        grid-template-columns:1fr;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Knovera</div>
+
+    <a href="science.html" class="back-btn">
+        ← Science
+    </a>
+</nav>
+
+
+<section class="hero">
+
+    <div class="badge">SCIENCE • CHEMISTRY</div>
+
+    <h1>
+        Explore the
+        <span class="gradient-text">World of Chemistry.</span>
+    </h1>
+
+    <p>
+        Understand matter, atoms, compounds and reactions
+        through simple concepts and real-world examples.
+    </p>
+
+</section>
+
+
+<div class="progress-box">
+
+    <div class="progress-info">
+        <span>Science Journey</span>
+        <span id="progressText">50%</span>
+    </div>
+
+    <div class="progress-bg">
+        <div class="progress" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<main class="container">
+
+
+<!-- CORE CONCEPTS -->
+
+<section class="section">
+
+    <h2>🧪 Core Concepts</h2>
+
+    <p class="section-intro">
+        Chemistry helps us understand what things are made of
+        and how they change.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">⚛️</div>
+            <h3>Atoms</h3>
+            <p>
+                Atoms are the basic building blocks of matter.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔬</div>
+            <h3>Elements</h3>
+            <p>
+                An element contains only one type of atom.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>Compounds</h3>
+            <p>
+                Compounds form when different elements chemically combine.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚗️</div>
+            <h3>Reactions</h3>
+            <p>
+                Chemical reactions transform substances into new substances.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ATOM CONCEPT -->
+
+<section class="section">
+
+    <h2>⚛️ Understanding Atoms</h2>
+
+    <div class="concept">
+
+        <h3>The tiny world of matter</h3>
+
+        <p>
+            Everything around us is made of matter, and matter is
+            built from tiny particles called atoms.
+        </p>
+
+        <br>
+
+        <p>
+            Atoms contain a nucleus with protons and neutrons,
+            while electrons move around the nucleus.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- STATES OF MATTER -->
+
+<section class="section">
+
+    <h2>🌡️ States of Matter</h2>
+
+    <p class="section-intro">
+        Matter commonly exists in three familiar states.
+    </p>
+
+    <div class="states">
+
+        <div class="state">
+            <strong>🧊 Solid</strong>
+            <span>Has a fixed shape and volume.</span>
+        </div>
+
+        <div class="state">
+            <strong>💧 Liquid</strong>
+            <span>Has a fixed volume but takes the container's shape.</span>
+        </div>
+
+        <div class="state">
+            <strong>💨 Gas</strong>
+            <span>Spreads out to fill its container.</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EVERYDAY CHEMISTRY -->
+
+<section class="section">
+
+    <h2>🏠 Chemistry Around Us</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🍳</div>
+            <h3>Cooking</h3>
+            <p>
+                Heating food causes physical and chemical changes.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧼</div>
+            <h3>Cleaning</h3>
+            <p>
+                Soap and cleaning agents use chemistry to remove dirt.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌱</div>
+            <h3>Plants</h3>
+            <p>
+                Plants use chemical reactions during photosynthesis.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGE -->
+
+<section class="section">
+
+    <div class="challenge">
+
+        <h2>⚡ Quick Chemistry Challenge</h2>
+
+        <p class="question">
+            Which of these is a compound?
+        </p>
+
+        <div class="options">
+
+            <button class="option" onclick="checkAnswer(false)">
+                Oxygen
+            </button>
+
+            <button class="option" onclick="checkAnswer(true)">
+                Water
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Gold
+            </button>
+
+            <button class="option" onclick="checkAnswer(false)">
+                Iron
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPLETE -->
+
+<button class="complete-btn" onclick="completeLesson()">
+    ✓ Mark Chemistry Complete
+</button>
+
+
+<!-- NEXT -->
+
+<div class="next">
+
+    <a href="biology.html">
+        Next Lesson: Biology →
+    </a>
+
+</div>
+
+
+</main>
+
+
+<footer>
+    © 2026 Knovera • Learn. Understand. Grow.
+</footer>
+
+
+<script>
+
+let progress = 50;
+
+function updateProgress(value){
+
+    progress = value;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+    document.getElementById("progressText").innerText =
+        progress + "%";
+}
+
+
+function checkAnswer(correct){
+
+    const result = document.getElementById("result");
+
+    if(correct){
+
+        result.innerText = "✓ Correct! Water is a compound.";
+        result.style.color = "#66ff99";
+
+        updateProgress(75);
+
+    }else{
+
+        result.innerText = "✗ Not quite. Try again.";
+        result.style.color = "#ff8f8f";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    updateProgress(100);
+
+    alert("Chemistry completed! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
