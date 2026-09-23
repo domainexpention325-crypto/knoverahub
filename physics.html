@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics | Knovera</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#07110d;
+    color:#f4fff8;
+    line-height:1.6;
+}
+
+header{
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(7,17,13,.85);
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    letter-spacing:1px;
+    color:#7fffb2;
+}
+
+.back{
+    color:#d9fbe6;
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid rgba(127,255,178,.25);
+    border-radius:12px;
+    transition:.3s;
+}
+
+.back:hover{
+    background:rgba(127,255,178,.1);
+    transform:translateY(-2px);
+}
+
+.hero{
+    padding:80px 8% 50px;
+    text-align:center;
+}
+
+.tag{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(127,255,178,.08);
+    border:1px solid rgba(127,255,178,.2);
+    color:#7fffb2;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(40px,7vw,72px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#7fffb2,#d7ffe6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#a9bdb1;
+    font-size:17px;
+}
+
+.progress-section{
+    width:84%;
+    max-width:900px;
+    margin:10px auto 50px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    color:#a9bdb1;
+    font-size:14px;
+}
+
+.progress-bar{
+    height:8px;
+    background:#14231b;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:15%;
+    height:100%;
+    background:linear-gradient(90deg,#55e894,#a0ffc2);
+    border-radius:20px;
+    transition:.5s;
+}
+
+main{
+    width:84%;
+    max-width:1100px;
+    margin:auto;
+}
+
+section{
+    margin-bottom:65px;
+}
+
+.title{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.text{
+    color:#a9bdb1;
+    margin-bottom:25px;
+}
+
+.box{
+    background:linear-gradient(
+        145deg,
+        rgba(127,255,178,.08),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(127,255,178,.15);
+    padding:28px;
+    border-radius:22px;
+}
+
+.box h3{
+    color:#7fffb2;
+    margin-bottom:8px;
+}
+
+.box p{
+    color:#a9bdb1;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.card{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    padding:25px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(127,255,178,.3);
+    background:rgba(127,255,178,.05);
+}
+
+.card h3{
+    color:#7fffb2;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#9fb2a6;
+}
+
+.formula{
+    margin-top:12px;
+    padding:12px;
+    background:#0b1912;
+    border-radius:10px;
+    color:#7fffb2;
+    font-family:monospace;
+}
+
+.challenge{
+    text-align:center;
+    padding:35px 25px;
+    background:linear-gradient(
+        145deg,
+        rgba(127,255,178,.09),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(127,255,178,.18);
+    border-radius:25px;
+}
+
+.question{
+    font-size:22px;
+    margin:20px 0;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    max-width:600px;
+    margin:auto;
+}
+
+.answer{
+    padding:13px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.04);
+    color:white;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.answer:hover{
+    background:rgba(127,255,178,.1);
+    border-color:rgba(127,255,178,.3);
+}
+
+.result{
+    margin-top:18px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+.complete{
+    padding:13px 20px;
+    border:none;
+    border-radius:13px;
+    background:#7fffb2;
+    color:#07110d;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.complete:hover{
+    transform:translateY(-3px);
+}
+
+.next{
+    display:inline-block;
+    margin-top:22px;
+    padding:12px 18px;
+    border:1px solid rgba(127,255,178,.3);
+    border-radius:12px;
+    color:#7fffb2;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.next:hover{
+    background:rgba(127,255,178,.08);
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    margin-top:50px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#718277;
+}
+
+@media(max-width:768px){
+
+    header{
+        padding:18px 5%;
+    }
+
+    .hero{
+        padding:60px 5% 40px;
+    }
+
+    main,
+    .progress-section{
+        width:90%;
+    }
+
+    .cards,
+    .answers{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">Knovera</div>
+
+    <a href="science.html" class="back">
+        ← Science
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="tag">
+        SCIENCE • PHYSICS
+    </div>
+
+    <h1>
+        The World of
+        <span class="gradient">Physics.</span>
+    </h1>
+
+    <p>
+        Understand motion, force, energy, gravity and
+        the physical laws that shape the world around us.
+    </p>
+
+</section>
+
+
+<div class="progress-section">
+
+    <div class="progress-top">
+        <span>Lesson Progress</span>
+        <span id="progressText">15%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+
+</div>
+
+
+<main>
+
+
+<section>
+
+    <h2 class="title">
+        What is Physics?
+    </h2>
+
+    <p class="text">
+        Physics is the branch of science that studies matter,
+        energy, motion, forces and the interactions between them.
+    </p>
+
+    <div class="box">
+
+        <h3>🚲 Think About It</h3>
+
+        <p>
+            When a bicycle moves, its wheels rotate, forces act on it,
+            and energy allows it to move. Physics helps us understand
+            all of these interactions.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2 class="title">
+        Core Concepts
+    </h2>
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <h3>🏃 Motion</h3>
+
+            <p>
+                Motion describes how an object's position changes
+                with time.
+            </p>
+
+            <div class="formula">
+                Speed = Distance ÷ Time
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>💪 Force</h3>
+
+            <p>
+                A force is a push or pull that can change
+                an object's motion.
+            </p>
+
+            <div class="formula">
+                Force = Mass × Acceleration
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>⚡ Energy</h3>
+
+            <p>
+                Energy is the ability to cause change or
+                perform work.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🌍 Gravity</h3>
+
+            <p>
+                Gravity is the force that attracts objects
+                toward one another.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2 class="title">
+        Motion Example
+    </h2>
+
+    <div class="box">
+
+        <h3>Example</h3>
+
+        <p>
+            A car travels 100 km in 2 hours.
+            What is its average speed?
+        </p>
+
+        <div class="formula">
+            Speed = 100 ÷ 2 = 50 km/h
+        </div>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2 class="title">
+        Forces Around Us
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Push</h3>
+            <p>
+                Applying force away from an object.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Pull</h3>
+            <p>
+                Applying force toward an object.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Friction</h3>
+            <p>
+                A force that opposes motion between surfaces.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Gravity</h3>
+            <p>
+                A force that attracts objects toward Earth.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="challenge">
+
+        <h2 class="title">
+            Quick Physics Challenge
+        </h2>
+
+        <p class="question">
+            A car travels 60 km in 2 hours.
+            What is its average speed?
+        </p>
+
+        <div class="answers">
+
+            <button class="answer"
+                onclick="checkAnswer('wrong')">
+                20 km/h
+            </button>
+
+            <button class="answer"
+                onclick="checkAnswer('correct')">
+                30 km/h
+            </button>
+
+            <button class="answer"
+                onclick="checkAnswer('wrong')">
+                40 km/h
+            </button>
+
+            <button class="answer"
+                onclick="checkAnswer('wrong')">
+                120 km/h
+            </button>
+
+        </div>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+</section>
+
+
+<section style="text-align:center">
+
+    <button class="complete" onclick="completeLesson()">
+        ✓ Mark Lesson Complete
+    </button>
+
+    <br>
+
+    <a href="chemistry.html" class="next">
+        Next Lesson → Chemistry
+    </a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 Knovera — Learn. Understand. Grow.
+    </p>
+
+</footer>
+
+
+<script>
+
+function checkAnswer(answer){
+
+    const result = document.getElementById("result");
+
+    if(answer === "correct"){
+
+        result.textContent =
+        "✓ Correct! 60 ÷ 2 = 30 km/h.";
+
+        result.style.color = "#7fffb2";
+
+        document.getElementById("progressBar").style.width = "50%";
+        document.getElementById("progressText").textContent = "50%";
+
+    }else{
+
+        result.textContent =
+        "✗ Not quite. Try again!";
+
+        result.style.color = "#ff8f8f";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    document.getElementById("progressBar").style.width = "100%";
+    document.getElementById("progressText").textContent = "100%";
+
+    alert("Physics lesson completed! ⚡");
+
+}
+
+</script>
+
+</body>
+</html>
