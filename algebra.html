@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Algebra | Knovera</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: rgba(7, 11, 20, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #63e6ff;
+        }
+
+        .back-btn {
+            color: #b8c3d9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #63e6ff;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 85px 7% 55px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 30px;
+            background: rgba(99,230,255,0.1);
+            border: 1px solid rgba(99,230,255,0.25);
+            color: #63e6ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(44px, 8vw, 76px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #9ba8bf;
+            font-size: 17px;
+        }
+
+        /* PROGRESS */
+
+        .progress-section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 7% 55px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            color: #aab5c8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 9px;
+            width: 100%;
+            background: #151c2c;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            border-radius: 20px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 7%;
+        }
+
+        .section {
+            margin-bottom: 65px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .section-title p {
+            color: #8f9bb0;
+        }
+
+        /* CONCEPT */
+
+        .concept-box {
+            padding: 30px;
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.055),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .concept-box p {
+            color: #a6b1c4;
+            margin-bottom: 15px;
+        }
+
+        .concept-box strong {
+            color: #ffffff;
+        }
+
+        /* CARDS */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 27px;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.05),
+                rgba(255,255,255,0.018)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99,230,255,0.3);
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #929eb3;
+            font-size: 14px;
+        }
+
+        /* EXAMPLES */
+
+        .example {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 13px;
+            background: #101725;
+            border: 1px solid rgba(99,230,255,0.12);
+            color: #d9e4f5;
+            font-family: monospace;
+        }
+
+        .example span {
+            color: #63e6ff;
+        }
+
+        /* PRACTICE */
+
+        .practice-box {
+            padding: 35px;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(99,230,255,0.09),
+                rgba(155,124,255,0.08)
+            );
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .practice-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .question {
+            color: #a6b1c4;
+            margin-bottom: 22px;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .answer {
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 13px;
+            background: #101725;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.25s;
+        }
+
+        .answer:hover {
+            border-color: #63e6ff;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        /* COMPLETE */
+
+        .complete-box {
+            text-align: center;
+            padding: 35px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .complete-btn {
+            margin-top: 20px;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 13px;
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            color: #071019;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* NEXT */
+
+        .next-section {
+            text-align: center;
+            padding: 10px 0 75px;
+        }
+
+        .next-btn {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 14px;
+            background: rgba(99,230,255,0.09);
+            border: 1px solid rgba(99,230,255,0.25);
+            color: #63e6ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .next-btn:hover {
+            background: #63e6ff;
+            color: #071019;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #707c91;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 65px 5% 45px;
+            }
+
+            .container,
+            .progress-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .card-grid,
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .concept-box,
+            .card,
+            .practice-box,
+            .complete-box {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Kno<span>vera</span>
+        </div>
+
+        <a href="math.html" class="back-btn">
+            ← Mathematics
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="badge">
+            MATHEMATICS • CHAPTER 02
+        </div>
+
+        <h1>
+            Welcome to<br>
+            <span class="gradient">Algebra.</span>
+        </h1>
+
+        <p>
+            Discover how letters and numbers work together
+            to represent unknown values and mathematical relationships.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+        <div class="progress-top">
+            <span>Lesson Progress</span>
+            <span id="progressText">40%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+
+        <!-- WHAT IS ALGEBRA -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>What is Algebra?</h2>
+
+                <p>
+                    Start with the basic idea.
+                </p>
+
+            </div>
+
+            <div class="concept-box">
+
+                <p>
+                    Algebra is a part of mathematics where
+                    <strong>letters can represent numbers</strong>.
+                </p>
+
+                <p>
+                    For example, if we don't know a number,
+                    we can use a letter such as <strong>x</strong>
+                    to represent it.
+                </p>
+
+                <div class="example">
+                    <span>x</span> + 5 = 12
+                </div>
+
+                <p style="margin-top:15px;">
+                    Here, <strong>x</strong> is the unknown value.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY IDEAS -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>Key Ideas</h2>
+
+                <p>
+                    These are the building blocks of algebra.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="card">
+
+                    <h3>Variables</h3>
+
+                    <p>
+                        A variable is a letter or symbol
+                        that represents a number.
+                    </p>
+
+                    <div class="example">
+                        <span>x</span> = unknown number
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Constants</h3>
+
+                    <p>
+                        A constant is a fixed value
+                        that does not change.
+                    </p>
+
+                    <div class="example">
+                        7, 12, 25
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Expressions</h3>
+
+                    <p>
+                        An expression combines numbers,
+                        variables and mathematical operations.
+                    </p>
+
+                    <div class="example">
+                        <span>3x</span> + 5
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Equations</h3>
+
+                    <p>
+                        An equation states that two
+                        mathematical expressions are equal.
+                    </p>
+
+                    <div class="example">
+                        <span>2x</span> + 4 = 10
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXAMPLES -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>Learn With Examples</h2>
+
+                <p>
+                    See how variables work in simple problems.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="card">
+
+                    <h3>Example 01</h3>
+
+                    <p>
+                        If x = 5, find the value of x + 3.
+                    </p>
+
+                    <div class="example">
+                        x + 3 = 5 + 3 = <span>8</span>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Example 02</h3>
+
+                    <p>
+                        If y = 4, find the value of 2y.
+                    </p>
+
+                    <div class="example">
+                        2y = 2 × 4 = <span>8</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+
+        <section class="section">
+
+            <div class="practice-box">
+
+                <h2>
+                    ⚡ Practice Challenge
+                </h2>
+
+                <p class="question">
+                    If x = 7, what is x + 6?
+                </p>
+
+
+                <div class="answers">
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(11)">
+                        11
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(12)">
+                        12
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(13)">
+                        13
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(14)">
+                        14
+                    </button>
+
+                </div>
+
+
+                <div id="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLETE -->
+
+        <section class="section">
+
+            <div class="complete-box">
+
+                <h2>
+                    Ready for the next lesson?
+                </h2>
+
+                <p style="color:#929eb3; margin-top:8px;">
+                    Complete this lesson when you've understood
+                    the basic ideas of algebra.
+                </p>
+
+                <button
+                    class="complete-btn"
+                    onclick="completeLesson()">
+                    ✓ Mark Lesson Complete
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEXT -->
+
+        <section class="next-section">
+
+            <a
+                href="equations.html"
+                class="next-btn">
+                Next Lesson → Linear Equations
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Knovera — Learn. Understand. Grow.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function checkAnswer(answer) {
+
+            const result = document.getElementById("result");
+
+            if (answer === 13) {
+
+                result.textContent =
+                    "Correct! 🎉 x + 6 = 7 + 6 = 13";
+
+                result.style.color = "#63e6ff";
+
+            } else {
+
+                result.textContent =
+                    "Not quite. Try again!";
+
+                result.style.color = "#ff8b8b";
+
+            }
+        }
+
+
+        function completeLesson() {
+
+            const progressFill =
+                document.getElementById("progressFill");
+
+            const progressText =
+                document.getElementById("progressText");
+
+            progressFill.style.width = "100%";
+
+            progressText.textContent = "100%";
+
+            alert(
+                "Algebra lesson completed! 🎉 Keep learning with Knovera."
+            );
+        }
+
+    </script>
+
+</body>
+</html>
