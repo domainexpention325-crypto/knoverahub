@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Linear Equations | Knovera</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: rgba(7, 11, 20, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #63e6ff;
+        }
+
+        .back-btn {
+            color: #b8c3d9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #63e6ff;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 85px 7% 55px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 30px;
+            background: rgba(99,230,255,0.1);
+            border: 1px solid rgba(99,230,255,0.25);
+            color: #63e6ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 76px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #9ba8bf;
+            font-size: 17px;
+        }
+
+        /* PROGRESS */
+
+        .progress-section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 7% 55px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            color: #aab5c8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 9px;
+            width: 100%;
+            background: #151c2c;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            border-radius: 20px;
+        }
+
+        /* CONTENT */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 7%;
+        }
+
+        .section {
+            margin-bottom: 65px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
+
+        .section-title p {
+            color: #8f9bb0;
+        }
+
+        /* CONCEPT */
+
+        .concept-box {
+            padding: 30px;
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.055),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .concept-box p {
+            color: #a6b1c4;
+            margin-bottom: 15px;
+        }
+
+        .concept-box strong {
+            color: #ffffff;
+        }
+
+        /* EQUATION DISPLAY */
+
+        .equation-display {
+            margin: 25px 0;
+            padding: 25px;
+            text-align: center;
+            border-radius: 18px;
+            background: #101725;
+            border: 1px solid rgba(99,230,255,0.15);
+            font-size: 28px;
+            font-family: monospace;
+            color: #ffffff;
+        }
+
+        .equation-display span {
+            color: #63e6ff;
+        }
+
+        /* CARDS */
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 27px;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.05),
+                rgba(255,255,255,0.018)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99,230,255,0.3);
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #929eb3;
+            font-size: 14px;
+        }
+
+        /* EXAMPLES */
+
+        .example {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 13px;
+            background: #101725;
+            border: 1px solid rgba(99,230,255,0.12);
+            color: #d9e4f5;
+            font-family: monospace;
+        }
+
+        .example span {
+            color: #63e6ff;
+        }
+
+        /* STEPS */
+
+        .steps {
+            display: grid;
+            gap: 14px;
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 20px;
+            border-radius: 17px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .step-number {
+            min-width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(99,230,255,0.1);
+            color: #63e6ff;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 4px;
+        }
+
+        .step p {
+            color: #929eb3;
+            font-size: 14px;
+        }
+
+        /* PRACTICE */
+
+        .practice-box {
+            padding: 35px;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(99,230,255,0.09),
+                rgba(155,124,255,0.08)
+            );
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .practice-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .question {
+            color: #a6b1c4;
+            margin-bottom: 22px;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .answer {
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 13px;
+            background: #101725;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.25s;
+        }
+
+        .answer:hover {
+            border-color: #63e6ff;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        /* COMPLETE */
+
+        .complete-box {
+            text-align: center;
+            padding: 35px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .complete-btn {
+            margin-top: 20px;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 13px;
+            background: linear-gradient(90deg, #63e6ff, #9b7cff);
+            color: #071019;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* NEXT */
+
+        .next-section {
+            text-align: center;
+            padding: 10px 0 75px;
+        }
+
+        .next-btn {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 14px;
+            background: rgba(99,230,255,0.09);
+            border: 1px solid rgba(99,230,255,0.25);
+            color: #63e6ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .next-btn:hover {
+            background: #63e6ff;
+            color: #071019;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #707c91;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 16px 5%;
+            }
+
+            .hero {
+                padding: 65px 5% 45px;
+            }
+
+            .container,
+            .progress-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .card-grid,
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .concept-box,
+            .card,
+            .practice-box,
+            .complete-box {
+                padding: 23px;
+            }
+
+            .equation-display {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Kno<span>vera</span>
+        </div>
+
+        <a href="algebra.html" class="back-btn">
+            ← Algebra
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="badge">
+            MATHEMATICS • CHAPTER 03
+        </div>
+
+        <h1>
+            Linear<br>
+            <span class="gradient">Equations.</span>
+        </h1>
+
+        <p>
+            Learn how to find unknown values by solving
+            equations step by step.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-section">
+
+        <div class="progress-top">
+            <span>Lesson Progress</span>
+            <span id="progressText">60%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>What is a Linear Equation?</h2>
+
+                <p>
+                    Let's understand the idea first.
+                </p>
+
+            </div>
+
+            <div class="concept-box">
+
+                <p>
+                    A linear equation is an equation where
+                    the variable has a power of <strong>1</strong>.
+                </p>
+
+                <p>
+                    Our goal is usually to find the value of
+                    the unknown variable.
+                </p>
+
+                <div class="equation-display">
+                    <span>x</span> + 5 = 12
+                </div>
+
+                <p>
+                    In this equation, we need to find the value
+                    of <strong>x</strong>.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BASIC RULES -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>Understand the Basics</h2>
+
+                <p>
+                    Keep both sides of an equation balanced.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="card">
+
+                    <h3>Unknown</h3>
+
+                    <p>
+                        The letter represents the value
+                        we are trying to find.
+                    </p>
+
+                    <div class="example">
+                        <span>x</span> + 4 = 9
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Equality</h3>
+
+                    <p>
+                        The equals sign means both sides
+                        have the same value.
+                    </p>
+
+                    <div class="example">
+                        5 + 3 <span>=</span> 8
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Inverse Operations</h3>
+
+                    <p>
+                        Addition and subtraction,
+                        as well as multiplication and division,
+                        work as inverse operations.
+                    </p>
+
+                    <div class="example">
+                        +5 ↔ −5
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Balance</h3>
+
+                    <p>
+                        Whatever operation you perform on one
+                        side should also be performed on the other.
+                    </p>
+
+                    <div class="example">
+                        x + 5 = 12
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOLVING STEPS -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>How to Solve an Equation</h2>
+
+                <p>
+                    Let's solve one step by step.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <div>
+
+                        <h3>Start with the equation</h3>
+
+                        <p>
+                            x + 5 = 12
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <div>
+
+                        <h3>Remove the +5</h3>
+
+                        <p>
+                            Subtract 5 from both sides.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <div>
+
+                        <h3>Simplify</h3>
+
+                        <p>
+                            x = 12 − 5
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <div>
+
+                        <h3>Find the answer</h3>
+
+                        <p>
+                            x = 7
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MORE EXAMPLES -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>Examples</h2>
+
+                <p>
+                    Practice recognizing the solution.
+                </p>
+
+            </div>
+
+
+            <div class="card-grid">
+
+
+                <div class="card">
+
+                    <h3>Example 01</h3>
+
+                    <p>
+                        Solve: x + 3 = 10
+                    </p>
+
+                    <div class="example">
+                        x = 10 − 3 = <span>7</span>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>Example 02</h3>
+
+                    <p>
+                        Solve: x − 4 = 9
+                    </p>
+
+                    <div class="example">
+                        x = 9 + 4 = <span>13</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+
+        <section class="section">
+
+            <div class="practice-box">
+
+                <h2>
+                    ⚡ Practice Challenge
+                </h2>
+
+                <p class="question">
+                    Solve: x + 6 = 14
+                </p>
+
+
+                <div class="answers">
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(6)">
+                        x = 6
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(7)">
+                        x = 7
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(8)">
+                        x = 8
+                    </button>
+
+                    <button
+                        class="answer"
+                        onclick="checkAnswer(9)">
+                        x = 9
+                    </button>
+
+                </div>
+
+
+                <div id="result"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLETE -->
+
+        <section class="section">
+
+            <div class="complete-box">
+
+                <h2>
+                    Lesson Complete?
+                </h2>
+
+                <p style="color:#929eb3; margin-top:8px;">
+                    Mark this lesson complete when you're
+                    comfortable solving basic equations.
+                </p>
+
+                <button
+                    class="complete-btn"
+                    onclick="completeLesson()">
+                    ✓ Mark Lesson Complete
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEXT LESSON -->
+
+        <section class="next-section">
+
+            <a
+                href="geometry.html"
+                class="next-btn">
+                Next Lesson → Geometry
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Knovera — Learn. Understand. Grow.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function checkAnswer(answer) {
+
+            const result =
+                document.getElementById("result");
+
+            if (answer === 8) {
+
+                result.textContent =
+                    "Correct! 🎉 x + 6 = 14, so x = 8.";
+
+                result.style.color = "#63e6ff";
+
+            } else {
+
+                result.textContent =
+                    "Not quite. Try again!";
+
+                result.style.color = "#ff8b8b";
+
+            }
+        }
+
+
+        function completeLesson() {
+
+            const progressFill =
+                document.getElementById("progressFill");
+
+            const progressText =
+                document.getElementById("progressText");
+
+            progressFill.style.width = "100%";
+
+            progressText.textContent = "100%";
+
+            alert(
+                "Linear Equations lesson completed! 🎉 Keep going with Knovera."
+            );
+        }
+
+    </script>
+
+</body>
+</html>
