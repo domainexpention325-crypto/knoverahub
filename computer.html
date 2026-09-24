@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Computer Science — Knovera</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(95,70,255,.18), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(0,190,255,.12), transparent 30%),
+        #07080d;
+    color:#eef3ff;
+    min-height:100vh;
+}
+
+nav{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(7,8,13,.8);
+    backdrop-filter:blur(14px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#9ea8ff;
+}
+
+.back{
+    text-decoration:none;
+    color:#b9c1d8;
+    font-size:14px;
+    padding:10px 16px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+    transition:.3s;
+}
+
+.back:hover{
+    color:#fff;
+    border-color:#6574ff;
+    background:rgba(70,80,220,.15);
+}
+
+.container{
+    width:88%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.hero{
+    padding:75px 0 45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 13px;
+    border-radius:30px;
+    background:rgba(75,80,220,.15);
+    border:1px solid rgba(120,130,255,.2);
+    color:#9da8ff;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(40px,7vw,70px);
+    line-height:1.05;
+    margin-bottom:20px;
+    max-width:850px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#fff,#9ea8ff,#43d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#9da5b9;
+    max-width:700px;
+    line-height:1.7;
+    font-size:17px;
+}
+
+.progress-box{
+    margin-top:30px;
+    max-width:500px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#b9c1d8;
+    font-size:13px;
+    margin-bottom:9px;
+}
+
+.progress{
+    height:9px;
+    background:#151722;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:100%;
+    background:linear-gradient(90deg,#5865e8,#32d8ff);
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(65,150,255,.4);
+}
+
+.section{
+    padding:35px 0;
+}
+
+.section-title{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.section-subtitle{
+    color:#858da4;
+    margin-bottom:25px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:linear-gradient(
+        145deg,
+        rgba(65,70,180,.15),
+        rgba(255,255,255,.025)
+    );
+    border:1px solid rgba(110,130,255,.12);
+    border-radius:20px;
+    padding:25px;
+    transition:.3s;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(90,210,255,.35);
+    box-shadow:0 20px 45px rgba(35,70,150,.22);
+}
+
+.icon{
+    width:46px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(70,80,220,.18);
+    border:1px solid rgba(100,150,255,.15);
+    font-size:21px;
+    margin-bottom:17px;
+}
+
+.card h3{
+    margin-bottom:9px;
+    font-size:19px;
+}
+
+.card p{
+    color:#9098ad;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.lesson{
+    margin-top:18px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:20px;
+    padding:25px;
+}
+
+.lesson h3{
+    margin-bottom:12px;
+    color:#9ea8ff;
+}
+
+.lesson p{
+    color:#a0a8ba;
+    line-height:1.7;
+}
+
+.example{
+    margin-top:15px;
+    padding:16px;
+    border-left:3px solid #6574ff;
+    background:rgba(65,75,200,.1);
+    border-radius:10px;
+    color:#dce3ff;
+}
+
+.code-box{
+    margin-top:15px;
+    padding:18px;
+    border-radius:14px;
+    background:#05060a;
+    border:1px solid rgba(90,130,255,.15);
+    color:#7ee7ff;
+    font-family:monospace;
+    line-height:1.7;
+    overflow-x:auto;
+}
+
+.challenge{
+    margin-top:30px;
+    padding:30px;
+    border-radius:24px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(65,70,190,.22),
+            rgba(255,255,255,.025)
+        );
+    border:1px solid rgba(100,130,255,.15);
+}
+
+.question{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    padding:15px 18px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.025);
+    color:#eee;
+    cursor:pointer;
+    transition:.25s;
+    text-align:left;
+}
+
+.option:hover{
+    background:rgba(70,90,220,.15);
+    border-color:rgba(100,170,255,.3);
+}
+
+.correct{
+    background:rgba(30,150,90,.18)!important;
+    border-color:rgba(70,220,140,.35)!important;
+}
+
+.wrong{
+    background:rgba(160,30,60,.2)!important;
+    border-color:rgba(255,80,100,.35)!important;
+}
+
+.complete-btn{
+    margin-top:30px;
+    padding:15px 25px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#5865e8,#229fd0);
+    color:white;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(45,80,190,.25);
+    transition:.3s;
+}
+
+.complete-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(50,110,230,.35);
+}
+
+/* Premium Creator Watermark */
+
+.creator{
+    text-align:center;
+    padding:65px 0 20px;
+}
+
+.creator-line{
+    width:90px;
+    height:1px;
+    margin:0 auto 25px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #6977ff,
+        transparent
+    );
+}
+
+.creator-text{
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#62697d;
+}
+
+.creator-name{
+    margin-top:10px;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:2px;
+    background:linear-gradient(
+        90deg,
+        #737dff,
+        #43d9ff
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.footer{
+    text-align:center;
+    padding:20px 0 35px;
+    color:#4f5565;
+    font-size:12px;
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:0 5%;
+    }
+
+    .container{
+        width:90%;
+    }
+
+    .hero{
+        padding-top:55px;
+    }
+
+    .card{
+        padding:21px;
+    }
+
+    h1{
+        font-size:43px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        Knovera
+    </div>
+
+    <a href="subjects.html" class="back">
+        ← Subjects
+    </a>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <span class="badge">
+        COMPUTER SCIENCE • TECHNOLOGY
+    </span>
+
+    <h1>
+        Understand the
+        <span class="gradient-text">
+            Digital World.
+        </span>
+    </h1>
+
+    <p>
+        Explore computers, programming, websites, the internet,
+        artificial intelligence and the technology that powers
+        the modern world.
+    </p>
+
+    <div class="progress-box">
+
+        <div class="progress-info">
+
+            <span>
+                Computer Science Progress
+            </span>
+
+            <span id="progressText">
+                100%
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPUTER BASICS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Computer Fundamentals
+    </h2>
+
+    <p class="section-subtitle">
+        Start with the building blocks of every computer.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>Computer</h3>
+
+            <p>
+                A computer is an electronic machine that
+                processes data and produces useful information.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">⚙️</div>
+
+            <h3>Hardware</h3>
+
+            <p>
+                The physical parts of a computer that you
+                can see and touch.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🧠</div>
+
+            <h3>Software</h3>
+
+            <p>
+                Programs and instructions that tell the
+                computer what to do.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🗂️</div>
+
+            <h3>Data</h3>
+
+            <p>
+                Raw facts and information that computers
+                can store and process.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HARDWARE -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Inside a Computer
+    </h2>
+
+    <p class="section-subtitle">
+        Important components work together to make a computer function.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">🧠</div>
+
+            <h3>CPU</h3>
+
+            <p>
+                The Central Processing Unit executes instructions
+                and performs calculations.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💾</div>
+
+            <h3>RAM</h3>
+
+            <p>
+                Temporary memory used by the computer while
+                programs are running.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💽</div>
+
+            <h3>Storage</h3>
+
+            <p>
+                Stores files, applications and other data
+                for long-term use.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🖥️</div>
+
+            <h3>Input & Output</h3>
+
+            <p>
+                Keyboard and mouse provide input, while displays
+                and speakers provide output.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROGRAMMING -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Programming
+    </h2>
+
+    <p class="section-subtitle">
+        Programming is how we give instructions to computers.
+    </p>
+
+    <div class="lesson">
+
+        <h3>
+            What is Programming?
+        </h3>
+
+        <p>
+            Programming means writing instructions that a
+            computer can understand and execute.
+        </p>
+
+        <div class="example">
+            Think → Write Instructions → Run → Get Result
+        </div>
+
+    </div>
+
+
+    <div class="grid" style="margin-top:18px;">
+
+        <div class="card">
+
+            <div class="icon">🐍</div>
+
+            <h3>Python</h3>
+
+            <p>
+                A beginner-friendly programming language used
+                for applications, automation, data and AI.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>JavaScript</h3>
+
+            <p>
+                A programming language that makes websites
+                interactive and dynamic.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">&lt;/&gt;</div>
+
+            <h3>HTML</h3>
+
+            <p>
+                HTML creates the structure and content of
+                webpages.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎨</div>
+
+            <h3>CSS</h3>
+
+            <p>
+                CSS controls the appearance and layout
+                of webpages.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HTML CSS JS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        How Websites Work
+    </h2>
+
+    <p class="section-subtitle">
+        Three technologies form the foundation of modern webpages.
+    </p>
+
+    <div class="lesson">
+
+        <h3>
+            HTML + CSS + JavaScript
+        </h3>
+
+        <p>
+            HTML creates the structure, CSS designs the page,
+            and JavaScript adds interaction and behaviour.
+        </p>
+
+        <div class="code-box">
+
+            &lt;h1&gt;Hello Knovera!&lt;/h1&gt;<br>
+            &lt;button&gt;Click Me&lt;/button&gt;
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTERNET -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        The Internet
+    </h2>
+
+    <p class="section-subtitle">
+        Understand how devices communicate across the world.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">🌍</div>
+
+            <h3>Internet</h3>
+
+            <p>
+                A global network connecting computers and
+                devices around the world.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔗</div>
+
+            <h3>Website</h3>
+
+            <p>
+                A collection of webpages that can be accessed
+                through the internet.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔎</div>
+
+            <h3>Browser</h3>
+
+            <p>
+                Software such as Chrome or Firefox used to
+                access websites.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">☁️</div>
+
+            <h3>Cloud</h3>
+
+            <p>
+                Remote computers and servers used to store
+                and process data over the internet.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AI -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Artificial Intelligence
+    </h2>
+
+    <p class="section-subtitle">
+        A glimpse into one of the most important areas of modern computing.
+    </p>
+
+    <div class="lesson">
+
+        <h3>
+            What is AI?
+        </h3>
+
+        <p>
+            Artificial Intelligence is a field of computer science
+            focused on creating systems that can perform tasks
+            that normally require human-like abilities such as
+            recognizing patterns, understanding language and
+            making predictions.
+        </p>
+
+        <div class="example">
+            Data → Learning → Pattern Recognition → Output
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGE -->
+
+<section class="section">
+
+    <div class="challenge">
+
+        <div class="question">
+            Quick Computer Challenge
+        </div>
+
+        <p style="color:#858da4;margin-bottom:20px;">
+            Which technology is mainly used to structure a webpage?
+        </p>
+
+        <div class="options">
+
+            <button
+                class="option"
+                onclick="checkAnswer(this,false)">
+                CSS
+            </button>
+
+            <button
+                class="option"
+                onclick="checkAnswer(this,true)">
+                HTML
+            </button>
+
+            <button
+                class="option"
+                onclick="checkAnswer(this,false)">
+                Python
+            </button>
+
+            <button
+                class="option"
+                onclick="checkAnswer(this,false)">
+                SQL
+            </button>
+
+        </div>
+
+        <p
+            id="result"
+            style="margin-top:18px;font-weight:600;">
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- COMPLETE -->
+
+<section
+    class="section"
+    style="text-align:center;">
+
+    <button
+        class="complete-btn"
+        onclick="completeLesson()">
+
+        ✓ Complete Computer Science
+
+    </button>
+
+</section>
+
+
+<section
+    class="section"
+    style="text-align:center;">
+
+    <a
+        href="subjects.html"
+        class="back"
+        style="display:inline-block;">
+
+        ← Back to Subjects
+
+    </a>
+
+</section>
+
+
+<!-- CREATOR WATERMARK -->
+
+<section class="creator">
+
+    <div class="creator-line"></div>
+
+    <div class="creator-text">
+        Created by
+    </div>
+
+    <div class="creator-name">
+        Rehaan Khan
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    © 2026 Knovera • Learn. Understand. Grow.
+
+</footer>
+
+
+<script>
+
+function checkAnswer(button, correct){
+
+    const options =
+        document.querySelectorAll(".option");
+
+    options.forEach(option => {
+
+        option.classList.remove(
+            "correct",
+            "wrong"
+        );
+
+    });
+
+    const result =
+        document.getElementById("result");
+
+    if(correct){
+
+        button.classList.add("correct");
+
+        result.textContent =
+            "✓ Correct! HTML creates the structure of a webpage.";
+
+        result.style.color =
+            "#78e6a5";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        result.textContent =
+            "✗ Not quite. Try again.";
+
+        result.style.color =
+            "#ff8797";
+
+    }
+
+}
+
+
+function completeLesson(){
+
+    document.getElementById("progressBar")
+        .style.width = "100%";
+
+    document.getElementById("progressText")
+        .textContent = "100%";
+
+    alert(
+        "Computer Science completed! 🎉"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
